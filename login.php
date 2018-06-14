@@ -8,9 +8,9 @@
 <!-- Viewport Meta Tag --> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Bootstrap CSS Link-->
-<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="tainguyen/css/bootstrap.min.css" />
 <!-- Custom Css -->
-<link rel="stylesheet" href="assets/css/custom-styles.css" />
+<link rel="stylesheet" href="tainguyen/css/custom-styles.css" />
 </head>
 <body>
 
@@ -87,11 +87,11 @@
 </script>
 
 <!-- jQuery library Link-->
-<script src="assets/js/jquery-3.1.min.js"></script>
+<script src="tainguyen/js/jquery-3.1.min.js"></script>
 <!-- Popper JS Link -->
-<script src="assets/js/popper.min.js"></script>
+<script src="tainguyen/js/popper.min.js"></script>
 <!-- Latest Compiled and Minified Bootstrap JavaScript CDN Link -->
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="tainguyen/js/bootstrap.min.js"></script>
 
 </body>
 </html>
