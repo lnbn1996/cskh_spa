@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <!-- Give a proper title to your web page -->
-<title>Login Page</title>
+<title>Trang đăng nhập</title>
 <meta charset="utf-8">
 <!-- Viewport Meta Tag --> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,7 @@
 <!-- Left light-dark-bg section Starts -->
             <div class="col-md-6 col-sm-12 left-box">
               <div class="col-lg-12">
-                <h1>Page Login For Manager</h1>
+                <h1>Trang đăng nhập dành cho nhân viên</h1>
               </div>
             </div>
 <!-- Left light-dark-bg section Ends -->
@@ -29,28 +29,22 @@
 <!-- Right dark-bg section Starts -->
             <div class="col-md-6 col-sm-12 form-box">
               <div class="col-lg-12">
-                <h2>Login</h2>
+                <h2>Đăng nhập</h2>
 <!-- Login Form Starts -->
-                <form class="login-form mt-1 needs-validation" novalidate>
+                <form name="fmDangNhap" method="POST" action="xulydangnhap.php" class="login-form mt-1 needs-validation" novalidate>
                   <div class="form-group">
-                    <input type="text" name="username" placeholder="Enter your username" class="form-control input-lg" required="">
-                    <div class="invalid-feedback">
-                      Please enter your username!
-                    </div>
+                    <input type="text" name="tennguoidung" placeholder="Nhập tên tài khoản" class="form-control input-lg" required="">
                   </div>
                   <div class="form-group">
-                    <input type="password" name="password" placeholder="Enter your password" class="form-control input-lg" required="">
-                    <div class="invalid-feedback">
-                      Please enter your password!
-                    </div>
+                    <input type="password" name="matkhau" placeholder="Nhập mật khẩu" class="form-control input-lg" required="">
                   </div>
-                  <div class="custom-control custom-checkbox mt-3 mb-3">
+<!--                   <div class="custom-control custom-checkbox mt-3 mb-3">
                     <input type="checkbox" class="custom-control-input" id="customControlInline" checked="">
                     <label class="custom-control-label" for="customControlInline">
-                      Remember me</label>
-                  </div>
+                      Nhớ mật khẩu</label>
+                  </div> -->
                   <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Sign in</button>
+                    <button class="btn btn-primary" type="submit" name="btnDangNhap">Dô !</button>
                   </div>
                 </form>
 <!-- Login Form Ends -->
