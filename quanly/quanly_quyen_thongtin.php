@@ -7,9 +7,13 @@
     <script src="../tainguyen/js/jquery-3.2.0.min.js"></script>
     <script src="../tainguyen/js/jquery.dataTables.min.js"></script>
     <script src="../tainguyen/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.4/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"></script>
+    <!-- For Modal -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <script language="javascript">
             function deleteConfirm(){
-                if(confirm("Bạn có chắc chắn muốn xóa!")){
+                if(confirm("Bạn có chắc chắn muốn xóa tất cả!")){
                     return true;
                 }
                 else{
@@ -17,52 +21,88 @@
                 }
             }
         </script>
+    <script language="javascript">
+      $(document).ready(function() {
+          var table = $('#tablespa').DataTable( {
+          responsive: true,
+          "language": {
+            "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang:",
+            "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu:",
+            "infoEmpty": "Dữ liệu rỗng",
+            "emptyTable": "Chưa có dữ liệu nào ",
+            "processing": "Đang xử lý ",
+            "search": "Tìm kiếm: ",
+            "loadingRecords": "Đang load dữ liệu",
+            "zeroRecords": "Không tìm thấy dữ liệu",
+            "infoFiltered": "(Được từ tổng số _MAX_ dòng dữ liệu",
+            "paginate": {
+              "first": "|<",
+              "last": ">|",
+              "next": ">>",
+              "previous": "<<"
+            }
+          },
+          "lengthMenu": [[5,10,15,20,25,-1],[5,10,15,20,25,"Tất cả"]]
+            });
+          new $.fn.dataTable.FixedHeader( table );
+      });
+    </script>
+<?php
+    include_once("../csdl/ketnoi.php");
+    session_start();
+?>        
 <title>Phân quyền</title>
 </head>
 
 <body>
 
- <form name="frmXoa" method="post" action="">
+ <form name="frmXoa" method="post" action="xuly_quyen.php">
         <h2 class="h2-quyen">Danh sách phân quyền</h2>
         <hr />
         <p>
-        <a href=""><img src="img/add.png" alt="Thêm mới" width="16" height="16" border="0" /> Thêm mới</a>
+        <a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="../tainguyen/hinhanh/add.png" alt="Thêm mới" width="16" height="16" border="0" /> Thêm mới</a>
         </p>
         <table id="tablespa" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
-                <tr>
-                	<th><strong>Chọn</strong></th>
-                    <th><strong>Số thứ tự</strong></th>
-                    <th><strong>Tên quyền</strong></th>
-                     <th><strong>Mô tả</strong></th>
-                    <th width="100"><strong>Cập nhật</strong></th>
-                    <th width="100"><strong>Xóa</strong></th>
-                </tr>
-             </thead>
-
-			<tbody>
+                    <tr>
+                    	 <th><strong>Chọn</strong></th>
+                        <th><strong>Số thứ tự</strong></th>
+                        <th><strong>Tên quyền</strong></th>
+                         <th><strong>Mô tả</strong></th>
+                        <th width="100"><strong>Cập nhật</strong></th>
+                        <th width="100"><strong>Xóa</strong></th>
+                    </tr>
+            </thead>
+      	    <tbody>
             <?php
+              $stt=1;
+              $result = mysqli_query($conn, "SELECT * FROM nhomquyenchitiet");
+              while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+              {
+            ?>
+      			<tr>
+                  	<td class="cotCheckBox"><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?php echo $row['NQCT_MA']; ?>" /></td>
+                    <td class="cotCheckBox"><?php echo $stt;  ?></td>
+                    <td><?php  echo $row['NQCT_TEN'];  ?></td>
+                    <td><?php echo $row['NQCT_DIENGIAI'];   ?></td>
 
-			?>
-			<tr>
-            	<td class="cotCheckBox"><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?php ?>" /></td>
-              <td class="cotCheckBox"><?php  ?></td>
-              <td><?php  ?></td>
-              <td><?php  ?></td>
-
-              <td align='center' class='cotNutChucNang'>
-              <a href="">
-              <img src='img/edit.png' border='0'  /></a></td>
-
-              <td align='center' class='cotNutChucNang'>
-              <a href="">
-              <img src='img/delete.png' border='0' /></a></td>
+                    <td align='center' class='cotNutChucNang'>
+                        <!-- <a href="quanly_quyen_thongtin.php?ma=<?php //echo $row['NQCT_MA']; ?>"> -->
+                        <a href="#myModal" data-target="#myModal" data-toggle="modal" id="<?php echo $row['NQCT_MA']; ?>" onClick="CapNhatQ(this);">
+                        <img src='../tainguyen/hinhanh/edit.png' border='0'  /></a>
+                    </td>
+    
+                    <td align='center' class='cotNutChucNang'>
+                        <a href="xuly_quyen.php?ma=<?php echo $row['NQCT_MA']; ?>">
+                        <img src='../tainguyen/hinhanh/delete.png' border='0' /></a>
+                    </td>
             </tr>
             <?php
-			?>
-			</tbody>
-
-        </table>
+                $stt++;
+              };
+      			?>
+      	     </tbody>
+      </table>
 
 
         <!--Nút Thêm mới , xóa tất cả-->
@@ -73,6 +113,93 @@
         </div><!--Nút chức nang-->
 
  </form>
+  <br>
+ <!-- Modal cập nhật -->
+     <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                        <div class="modal-content" style="background-color: white;">
+                            <h2 class="h2-quyen">Cập nhật quyền </h2>
+                            <hr />
+                            <form id="formtest" name="formtest" method="post" action="xuly_quyen.php" class="form-horizontal" role="form">
+                    <!-- ten khach hang -->
+                            <input type="hidden" name="nqct_ma" id="nqct_ma" value="">
+                                        <div class="form-group">
+                                                <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
+                                        <div class="col-sm-10">
+                        <!-- them gia tri co san vao value de cap nhat -->
+                                                      <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value="">
+                                                </div>
+                                        </div>
+                                         <div class="form-group">
+                                                 <label for="lblDiaChi" class="col-sm-2 control-label">Mô tả:  </label>
+                                                 <div class="col-sm-10">
+                                                     <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả"/>
+                                                 </div>
+                                                 </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                  <input type="submit"  class="btn btn-primary" name="btnCapNhat" id="btnCapNhat" value="Cập Nhật"/>
+                                                  <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Trở về" data-dismiss="modal" />
 
+                                            </div>
+                                        </div>
+                            </form>
+                        </div>
+                    </div>
+     </div>
+<!-- End Modal Cập nhật -->
+
+<!-- Modal Thêm mới -->
+     <div class="modal fade" id="modalThemMoi" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content" style="background-color: white;">
+                        <h2 class="h2-quyen">Thêm quyền </h2>
+                        <hr />
+                            <form id="form1" name="form1" method="post" action="xuly_quyen.php" class="form-horizontal" role="form">
+                    <!-- ten khach hang -->
+                                        <div class="form-group">
+                                                <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
+                                                <div class="col-sm-10">
+                                                      <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value=''>
+                                                </div>
+                                        </div>
+                                         <div class="form-group">
+                                                 <label for="lblDiaChi" class="col-sm-2 control-label">Mô tả:  </label>
+                                                 <div class="col-sm-10">
+                                                     <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả"/>
+                                                 </div>
+                                                 </div>
+
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                  <input type="submit"  class="btn btn-primary" name="btnThemMoi" id="btnThemMoi" value="Thêm mới"/>
+                                                  <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Trở về" data-dismiss="modal" />
+
+                                            </div>
+                                        </div>
+                                    </form>
+                        </div>
+                </div>
+     </div>
+<!-- End Modal Thêm mới -->
 </body>
 </html>
+<script>
+    function CapNhatQ(a) {
+        var nqct_ma = a.id;
+        $.ajax({
+            url:"xuly_quyen.php",
+            method:"GET",
+            data: {"nqct_ma": nqct_ma},
+            success: function(response){
+                // console.log(response);
+                var obj = JSON.parse(response);
+                $("#nqct_ma").val(obj.nqct_ma);
+                $("#txtTenQ").val(obj.nqct_ten);
+                $("#txtMoTaQ").val(obj.nqct_diengiai);
+
+            }
+        });
+    }
+</script>

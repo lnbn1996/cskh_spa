@@ -16,7 +16,7 @@
 <div class="container">
 	<h2 class="h2-quyen">Thêm quyền </h2>
     <hr />
-    	<form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">
+    	<form id="form1" name="form1" method="post" action="xuly_quyen.php" class="form-horizontal" role="form">
 <!-- ten khach hang -->
 					<div class="form-group">
 						    <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
@@ -35,7 +35,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 						      <input type="submit"  class="btn btn-primary" name="btnThemMoi" id="btnThemMoi" value="Thêm mới"/>
-                              <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Bỏ qua" onclick="index.php" />
+                              <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Trở về" onclick="quanly_quyen_thongtin.php" />
 
 						</div>
 					</div>
