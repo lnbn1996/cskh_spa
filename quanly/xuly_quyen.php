@@ -40,6 +40,9 @@
 	          mysqli_query($conn,"DELETE FROM nhomquyenchitiet where nqct_ma=$nqct_ma");
 	          echo '<meta http-equiv="refresh" content="0;URL=quanly_quyen_thongtin.php"/>';
 	        }
+		}else{
+		          echo "<script type='text/javascript'>alert('Bạn chưa chọn quyền cần xoá!')</script>";
+		          echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';		
 		}
     	if(isset($_GET["ma"]))
     	{
@@ -52,9 +55,9 @@
 		    {
 		          echo "<script type='text/javascript'>alert('Quyền yêu cầu xoá Không tồn tại!')</script>";
 		          echo '<meta http-equiv="refresh" content="0;URL=quanly_quyen_thongtin.php"/>';
-		    }
+		    } //Nếu không truyền mã để xóa thì báo lỗi
 	    }
-	      //Nếu không truyền mã để xóa thì báo lỗi
+	     
 	    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') { //kiểm tra xe có request Ajax gửi tới hay không
 				$ma = $_GET["nqct_ma"];
 				$result = mysqli_query($conn, "SELECT nqct_ma, nqct_ten, nqct_diengiai FROM nhomquyenchitiet WHERE nqct_ma=$ma");

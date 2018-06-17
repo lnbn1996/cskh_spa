@@ -11,16 +11,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"></script>
     <!-- For Modal -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-        <script language="javascript">
-            function deleteConfirm(){
-                if(confirm("Bạn có chắc chắn muốn xóa tất cả!")){
-                    return true;
-                }
-                else{
-                    return false;
-                }
-            }
-        </script>
+    <!-- Others Script -->
+    <script src="../tainguyen/js/funcs.js"></script>
+    <!-- Script for DataTable to Show -->
     <script language="javascript">
       $(document).ready(function() {
           var table = $('#tablespa').DataTable( {
@@ -88,12 +81,12 @@
 
                     <td align='center' class='cotNutChucNang'>
                         <!-- <a href="quanly_quyen_thongtin.php?ma=<?php //echo $row['NQCT_MA']; ?>"> -->
-                        <a href="#myModal" data-target="#myModal" data-toggle="modal" id="<?php echo $row['NQCT_MA']; ?>" onClick="CapNhatQ(this);">
+                        <a href="#modalCapNhat" data-target="#modalCapNhat" data-toggle="modal" id="<?php echo $row['NQCT_MA']; ?>" onClick="CapNhatQ(this);">
                         <img src='../tainguyen/hinhanh/edit.png' border='0'  /></a>
                     </td>
     
                     <td align='center' class='cotNutChucNang'>
-                        <a href="xuly_quyen.php?ma=<?php echo $row['NQCT_MA']; ?>">
+                        <a href="xuly_quyen.php?ma=<?php echo $row['NQCT_MA']; ?>" onClick="return deleteConfirm()"/>
                         <img src='../tainguyen/hinhanh/delete.png' border='0' /></a>
                     </td>
             </tr>
@@ -108,32 +101,30 @@
         <!--Nút Thêm mới , xóa tất cả-->
         <div class="row" style="background-color:#FFF"><!--Nút chức nang-->
             <div class="col-md-12">
-            	<input name="btnXoa" type="submit" value="Xóa mục chọn" id="btnXoa" onlick='return deleteConfirm()' class="btn btn-primary" />
+            	<input name="btnXoa" type="submit" value="Xóa mục chọn" id="btnXoa" onClick='return deleteConfirm()' class="btn btn-primary" />
             </div>
         </div><!--Nút chức nang-->
 
  </form>
   <br>
  <!-- Modal cập nhật -->
-     <div class="modal fade" id="myModal" role="dialog">
+     <div class="modal fade" id="modalCapNhat" role="dialog">
                 <div class="modal-dialog modal-lg">
                         <div class="modal-content" style="background-color: white;">
                             <h2 class="h2-quyen">Cập nhật quyền </h2>
                             <hr />
                             <form id="formtest" name="formtest" method="post" action="xuly_quyen.php" class="form-horizontal" role="form">
-                    <!-- ten khach hang -->
                             <input type="hidden" name="nqct_ma" id="nqct_ma" value="">
                                         <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
                                         <div class="col-sm-10">
-                        <!-- them gia tri co san vao value de cap nhat -->
-                                                      <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value="">
+                                                      <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value="" required="">
                                                 </div>
                                         </div>
                                          <div class="form-group">
                                                  <label for="lblDiaChi" class="col-sm-2 control-label">Mô tả:  </label>
                                                  <div class="col-sm-10">
-                                                     <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả"/>
+                                                     <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả" required=""/>
                                                  </div>
                                                  </div>
                                         <div class="form-group">
@@ -160,13 +151,13 @@
                                         <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
                                                 <div class="col-sm-10">
-                                                      <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value=''>
+                                                      <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value='' required="">
                                                 </div>
                                         </div>
                                          <div class="form-group">
                                                  <label for="lblDiaChi" class="col-sm-2 control-label">Mô tả:  </label>
                                                  <div class="col-sm-10">
-                                                     <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả"/>
+                                                     <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả" required=""/>
                                                  </div>
                                                  </div>
 
@@ -185,7 +176,12 @@
 <!-- End Modal Thêm mới -->
 </body>
 </html>
+<!-- Scripts for Modal/ Ajax/ others -->
 <script>
+    /* reset modal when closed */
+    $('#modalThemMoi').on('hidden.bs.modal', function () {
+        $(this).find('form').trigger('reset');
+    });
     function CapNhatQ(a) {
         var nqct_ma = a.id;
         $.ajax({
