@@ -51,18 +51,20 @@
 		          echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';
 		    }
 	}
-	if(isset($_POST['btnXoa']) && isset($_POST['checkbox'])) {
+	if(isset($_POST['btnXoa'])) {
+		if(isset($_POST['checkbox'])){
 	        for ($i=0; $i < count($_POST['checkbox']);$i++)
 	        {
 	          $dv_ma = $_POST['checkbox'][$i];
 	          mysqli_query($conn,"DELETE FROM dichvu where dv_ma=$dv_ma");
 	          echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';
 	        }
+	    }else{
+			echo "<script type='text/javascript'>alert('Bạn chưa chọn dịch vụ cần xoá!')</script>";
+			echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';		
+		}
 	}
-	// else{
-	// 	          echo "<script type='text/javascript'>alert('Bạn chưa chọn dịch vụ cần xoá!')</script>";
-	// 	          echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';		
-	// }
+
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') { //kiểm tra xe có request Ajax gửi tới hay không
 		$ma = $_GET["dv_ma"];
 		$result = mysqli_query($conn, "SELECT dv_ma, dv_ten, dv_noidung, dv_giatien FROM dichvu WHERE dv_ma=$ma");
