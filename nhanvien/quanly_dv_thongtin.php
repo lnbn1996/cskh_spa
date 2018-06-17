@@ -117,19 +117,19 @@
                     <div class="form-group">
                         <label for="txtTen" class="col-sm-2 control-label">Tên dịch vụ:  </label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtTenDV" id="txtTenDV" class="form-control" placeholder="Tên dịch vụ" value=''>
+                            <input type="text" name="txtTenDV" id="txtTenDV" class="form-control" placeholder="Tên dịch vụ" required="" value=''>
                         </div>
                    </div>
                    <div class="form-group">
                         <label for="lblDiaChi" class="col-sm-2 control-label">Nội dung:  </label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtNoiDungDV" id="txtNoiDungDV" value="" class="form-control" placeholder="Nội dung dịch vụ"/>
+                            <input type="text" name="txtNoiDungDV" id="txtNoiDungDV" value="" class="form-control" required="" placeholder="Nội dung dịch vụ"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lblDiaChi" class="col-sm-2 control-label">Giá dịch vụ:  </label>
                         <div class="col-sm-10">
-                            <input type="text" name="txtGiaDV" id="txtGiaDV" value="" class="form-control" placeholder="VND"/>
+                            <input type="text" name="txtGiaDV" id="txtGiaDV" value="" class="form-control" required="" placeholder="VND"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -156,19 +156,19 @@
                         <div class="form-group">
                             <label for="txtTen" class="col-sm-2 control-label">Tên dịch vụ:  </label>
                             <div class="col-sm-10">
-                                <input type="text" name="txtTenDVCN" id="txtTenDVCN" class="form-control" value="">
+                                <input type="text" name="txtTenDVCN" id="txtTenDVCN" class="form-control" required="" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="lblDiaChi" class="col-sm-2 control-label">Nội dung:  </label>
                             <div class="col-sm-10">
-                                <input type="text" name="txtNoiDungCN" id="txtNoiDungCN" value="" class="form-control"/>
+                                <input type="text" name="txtNoiDungCN" id="txtNoiDungCN" value="" required="" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="lblDiaChi" class="col-sm-2 control-label">Giá dịch vụ (VND):  </label>
                             <div class="col-sm-10">
-                                <input type="text" name="txtGiaDVCN" id="txtGiaDVCN" value="" class="form-control" />
+                                <input type="text" name="txtGiaDVCN" id="txtGiaDVCN" value="" required="" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -192,9 +192,9 @@
     /* function tách số tiền fThemMoi */
     (function($, undefined) {
     $(function() {
-        var $form = $( "#fThemMoi" );
-        var $input = $form.find( "#txtGiaDV" );
-        $input.on( "keyup", function( event ) {           
+        var $fm = $( "#fThemMoi" );
+        var $inp = $fm.find( "#txtGiaDV" );
+        $inp.on( "keyup", function( event ) {           
          // When user select text in the document, also abort.
         // var selection = window.getSelection().toString();
         // if ( selection !== '' ) {
@@ -206,11 +206,11 @@
         // }    
         var $this = $( this );        
         // Get the value.
-        var input = $this.val();          
-        var input = input.replace(/[\D\s\._\-]+/g, "");
-            input = input ? parseInt( input, 10 ) : 0;
+        var inp = $this.val();          
+        var inp = inp.replace(/[\D\s\._\-]+/g, "");
+            inp = inp ? parseInt( inp, 10 ) : 0;
             $this.val( function() {
-                        return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
+                        return ( inp === 0 ) ? "" : inp.toLocaleString( "en-US" );
                     } );
             });     
         });
@@ -219,16 +219,16 @@
     /* function tách số tiền fCapNhat */
     (function($, undefined) {
     $(function() {
-        var $form = $( "#fCapNhat" );
-        var $input = $form.find( "#txtGiaDVCN" );
-        $input.on( "keyup", function( event ) {              
+        var $fm1 = $( "#fCapNhat" );
+        var $gia = $fm1.find( "#txtGiaDVCN" );
+        $gia.on( "keyup", function( event ) {              
         var $this = $( this );        
         // Get the value.
-        var input = $this.val();          
-        var input = input.replace(/[\D\s\._\-]+/g, "");
-            input = input ? parseInt( input, 10 ) : 0;
+        var gia = $this.val();          
+        var gia = gia.replace(/[\D\s\._\-]+/g, "");
+            gia = gia ? parseInt( gia, 10 ) : 0;
             $this.val( function() {
-                        return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
+                        return ( gia === 0 ) ? "" : gia.toLocaleString( "en-US" );
                     } );
             });     
         });
@@ -243,7 +243,7 @@
             method:"GET",
             data: {"dv_ma": dv_ma},
             success: function(response){
-                // console.log(response);
+                console.log(response);
                 var obj = JSON.parse(response);
                 $("#dv_ma").val(obj.dv_ma);
                 $("#txtTenDVCN").val(obj.dv_ten);

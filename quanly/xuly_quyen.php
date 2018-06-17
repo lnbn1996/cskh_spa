@@ -40,9 +40,6 @@
 	          mysqli_query($conn,"DELETE FROM nhomquyenchitiet where nqct_ma=$nqct_ma");
 	          echo '<meta http-equiv="refresh" content="0;URL=quanly_quyen_thongtin.php"/>';
 	        }
-		}else{
-		          echo "<script type='text/javascript'>alert('Bạn chưa chọn quyền cần xoá!')</script>";
-		          echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';		
 		}
     	if(isset($_GET["ma"]))
     	{
