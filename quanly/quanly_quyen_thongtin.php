@@ -3,10 +3,10 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../tainguyen/css/css.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="/tainguyen/css/bootstrap.min.css">
-    <script src="/tainguyen/js/jquery-3.2.0.min.js"></script>
-    <script src="/tainguyen/js/jquery.dataTables.min.js"></script>
-    <script src="/tainguyen/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="../tainguyen/css/bootstrap.min.css">
+    <script src="../tainguyen/js/jquery-3.2.0.min.js"></script>
+    <script src="../tainguyen/js/jquery.dataTables.min.js"></script>
+    <script src="../tainguyen/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.4/js/dataTables.fixedHeader.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"></script>
     <!-- For Modal -->
@@ -117,13 +117,13 @@
                             <input type="hidden" name="nqct_ma" id="nqct_ma" value="">
                                         <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-9">
                                                       <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value="" required="">
                                                 </div>
                                         </div>
                                          <div class="form-group">
                                                  <label for="lblDiaChi" class="col-sm-2 control-label">Mô tả:  </label>
-                                                 <div class="col-sm-10">
+                                                 <div class="col-sm-9">
                                                      <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả" required=""/>
                                                  </div>
                                                  </div>
@@ -150,13 +150,13 @@
                     <!-- ten khach hang -->
                                         <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-9">
                                                       <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value='' required="">
                                                 </div>
                                         </div>
                                          <div class="form-group">
                                                  <label for="lblDiaChi" class="col-sm-2 control-label">Mô tả:  </label>
-                                                 <div class="col-sm-10">
+                                                 <div class="col-sm-9">
                                                      <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả" required=""/>
                                                  </div>
                                                  </div>

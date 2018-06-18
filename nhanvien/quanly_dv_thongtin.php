@@ -116,19 +116,19 @@
                 <form id="fThemMoi" name="fThemMoi" method="post" action="xuly_dv.php" class="form-horizontal" role="form">
                     <div class="form-group">
                         <label for="txtTen" class="col-sm-2 control-label">Tên dịch vụ:  </label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <input type="text" name="txtTenDV" id="txtTenDV" class="form-control" placeholder="Tên dịch vụ" required="" value=''>
                         </div>
                    </div>
                    <div class="form-group">
                         <label for="lblDiaChi" class="col-sm-2 control-label">Nội dung:  </label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <input type="text" name="txtNoiDungDV" id="txtNoiDungDV" value="" class="form-control" required="" placeholder="Nội dung dịch vụ"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="lblDiaChi" class="col-sm-2 control-label">Giá dịch vụ:  </label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-9">
                             <input type="text" name="txtGiaDV" id="txtGiaDV" value="" class="form-control" required="" placeholder="VND"/>
                         </div>
                     </div>
@@ -155,19 +155,19 @@
                 <input type="hidden" name="dv_ma" id="dv_ma" value="">
                         <div class="form-group">
                             <label for="txtTen" class="col-sm-2 control-label">Tên dịch vụ:  </label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <input type="text" name="txtTenDVCN" id="txtTenDVCN" class="form-control" required="" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="lblDiaChi" class="col-sm-2 control-label">Nội dung:  </label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <input type="text" name="txtNoiDungCN" id="txtNoiDungCN" value="" required="" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="lblDiaChi" class="col-sm-2 control-label">Giá dịch vụ (VND):  </label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <input type="text" name="txtGiaDVCN" id="txtGiaDVCN" value="" required="" class="form-control" />
                             </div>
                         </div>
