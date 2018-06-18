@@ -3,10 +3,10 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../tainguyen/css/css.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../tainguyen/css/bootstrap.min.css">
-    <script src="../tainguyen/js/jquery-3.2.0.min.js"></script>
-    <script src="../tainguyen/js/jquery.dataTables.min.js"></script>
-    <script src="../tainguyen/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="/tainguyen/css/bootstrap.min.css">
+    <script src="/tainguyen/js/jquery-3.2.0.min.js"></script>
+    <script src="/tainguyen/js/jquery.dataTables.min.js"></script>
+    <script src="/tainguyen/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/fixedheader/3.1.4/js/dataTables.fixedHeader.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"></script>
     <!-- For Modal -->

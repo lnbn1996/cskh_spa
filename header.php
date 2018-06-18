@@ -5,6 +5,9 @@
 <link rel="stylesheet" type="text/css" href="tainguyen/css/css.css" />
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="tainguyen/css/bootstrap.min.css">
+    <script src="tainguyen/js/jquery-3.2.0.min.js"></script>
+
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <title>header menu</title>
 </head>
@@ -30,7 +33,7 @@
               <li><a href="#">ccccc</a></li>
             </ul>
           </li>
-          <li><a href="#">Menu 2
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 2
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">11111</a></li>
@@ -38,7 +41,7 @@
               <li><a href="#">33333</a></li>
             </ul>
           </li>
-          <li><a href="#">Menu 3
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 3
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">zzzz</a></li>
