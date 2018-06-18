@@ -8,7 +8,7 @@
 <script src="../tainguyen/js/jquery.dataTables.min.js"></script>
 <script src="../tainguyen/js/dataTables.bootstrap.min.js"></script>
 <title>Cập nhật nhân viên</title>
-</head>
+</head> 
 
 <body>
 <div class="container">
