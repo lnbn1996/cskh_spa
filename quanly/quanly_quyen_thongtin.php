@@ -117,13 +117,13 @@
                             <input type="hidden" name="nqct_ma" id="nqct_ma" value="">
                                         <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
-                                        <div class="col-sm-10">
+                                        <div class="col-sm-9">
                                                       <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value="" required="">
                                                 </div>
                                         </div>
                                          <div class="form-group">
                                                  <label for="lblDiaChi" class="col-sm-2 control-label">Mô tả:  </label>
-                                                 <div class="col-sm-10">
+                                                 <div class="col-sm-9">
                                                      <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả" required=""/>
                                                  </div>
                                                  </div>
@@ -150,13 +150,13 @@
                     <!-- ten khach hang -->
                                         <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
-                                                <div class="col-sm-10">
+                                                <div class="col-sm-9">
                                                       <input type="text" name="txtTenQ" id="txtTenQ" class="form-control" placeholder="Tên quyền" value='' required="">
                                                 </div>
                                         </div>
                                          <div class="form-group">
                                                  <label for="lblDiaChi" class="col-sm-2 control-label">Mô tả:  </label>
-                                                 <div class="col-sm-10">
+                                                 <div class="col-sm-9">
                                                      <input type="text" name="txtMoTaQ" id="txtMoTaQ" value="" class="form-control" placeholder="Mô tả" required=""/>
                                                  </div>
                                                  </div>
