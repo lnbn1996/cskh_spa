@@ -25,7 +25,7 @@
        		 <ul class="nav navbar-nav">
 
           <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 1
+            <a class="dropdown-toggle" data-toggle="dropdown"  href="#">Menu 1
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="#">aaaaaa</a></li>

@@ -50,6 +50,7 @@
         <a href="quanly_dv_thongtin.php"><h2 class="h2-dv">Thông tin dịch vụ</h2></a>
         <hr />
         <p>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
         <a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="../tainguyen/hinhanh/add.png" alt="Thêm mới" width="16" height="16" border="0" /> Thêm mới</a>
         </p>
         <form name="fMain" id="fMain" method="post" action="xuly_dv.php">
