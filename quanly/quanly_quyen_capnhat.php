@@ -34,7 +34,7 @@
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 						      <input type="submit"  class="btn btn-primary" name="btnCapNhat" id="btnCapNhat" value="Cập Nhật"/>
-                              <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Bỏ qua" onclick="index.php" />
+                              <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Trở về" onclick="quanly_quyen_thongtin.php" />
 
 						</div>
 					</div>
