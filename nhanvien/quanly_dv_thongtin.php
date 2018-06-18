@@ -50,6 +50,7 @@
         <a href="quanly_dv_thongtin.php"><h2 class="h2-dv">Thông tin dịch vụ</h2></a>
         <hr />
         <p>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
         <a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="../tainguyen/hinhanh/add.png" alt="Thêm mới" width="16" height="16" border="0" /> Thêm mới</a>
         </p>
         <form name="fMain" id="fMain" method="post" action="xuly_dv.php">
@@ -155,19 +156,19 @@
                 <input type="hidden" name="dv_ma" id="dv_ma" value="">
                         <div class="form-group">
                             <label for="txtTen" class="col-sm-2 control-label">Tên dịch vụ:  </label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <input type="text" name="txtTenDVCN" id="txtTenDVCN" class="form-control" required="" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="lblDiaChi" class="col-sm-2 control-label">Nội dung:  </label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <input type="text" name="txtNoiDungCN" id="txtNoiDungCN" value="" required="" class="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="lblDiaChi" class="col-sm-2 control-label">Giá dịch vụ (VND):  </label>
-                            <div class="col-sm-10">
+                            <div class="col-sm-9">
                                 <input type="text" name="txtGiaDVCN" id="txtGiaDVCN" value="" required="" class="form-control" />
                             </div>
                         </div>

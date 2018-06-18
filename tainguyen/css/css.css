@@ -1,8 +1,5 @@
-* {
-margin: 0;
-padding: 0;
 
-}
+
 /* index */
 .header {
 	width:100%;
@@ -100,6 +97,7 @@ padding: 0;
 	}
 
 .h2-dv {
-	color:#6C6;		
+	color:#6C6;
+	margin-left:1%;
 	}
 	
