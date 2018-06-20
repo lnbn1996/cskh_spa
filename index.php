@@ -1,24 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="tainguyen/css/css.css" />
+<link rel="stylesheet" href="tainguyen/css/bootstrap.min.css">
+<title>Trang chủ quản trị </title>
+</head>
 
-
+<body>
 
 <div class="header" >
-	 <?php
-			include('header.php');
-		?>
+	 < ?php
+			include('include/menu.php');
+		? >
   </div>
 
 <div class="content" >
 		<div class="index-lh" >
-        <div class="tk-lh-gy" >Lịch hẹn </div>
-            
+        	<h2>Lịch hẹn (mới) </h2>
+            <hr class="hr-content" />
         	<div> nội dung ... </div>
             <div class="xemthem" >
             	<a href="##"> << xem thêm >>  </a>
              </div>
         </div>
         <div class="index-tk" >
-          <div class="tk-lh-gy" >Tìm kiếm</div>
-            
+        	<h2 > Tìm kiếm </h2>
+            <hr  class="hr-content" />
 
             <div class="tk-lieutrinh" >
             	<div class="tt-lt-kh"> Thông tin liệu trình </div>
@@ -30,7 +38,7 @@
 							</div>
 					</div>
                 		<div class="form-group">
-						<div class="col-sm-offset-8 col-sm-10">
+						<div class="col-sm-offset-9 col-sm-10">
 						      <input type="submit"  class="btn btn-primary" name="btnTimkiem" id="btnTimKiem" value="Tìm kiếm"/>
 
 						</div>
@@ -48,7 +56,7 @@
 							</div>
 					</div>
                 		<div class="form-group">
-						<div class="col-sm-offset-8 col-sm-10">
+						<div class="col-sm-offset-9 col-sm-10">
 						      <input type="submit"  class="btn btn-primary" name="btnTimkiem" id="btnTimKiem" value="Tìm kiếm"/>
 
 						</div>
@@ -58,8 +66,8 @@
         </div>
         </div>
         <div class="index-gy" >
-          <div class="tk-lh-gy" >Góp ý </div>
-            
+        	<h2>Góp ý (mới)</h2>
+            <hr  class="hr-content" />
             <div> nội dung ... </div>
             <div class="xemthem" >
             	<a href="##"> << xem thêm >>  </a>
@@ -68,8 +76,12 @@
 </div>
 
 <div class="footer" >
-	<?php
-			include('footer.php');
-		?>
+	< ?php
+			include('include/footer.php');
+		? >
 
   </div>
+
+
+</body>
+</html>

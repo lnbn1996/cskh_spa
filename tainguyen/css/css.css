@@ -7,26 +7,20 @@ body a:hover {
 .header {
 	width:100%;
 	height:5%;
-
+		
 	}
 
 .content {
-	margin-top: 1%;
 	width:100%;
 	float:left;
-	clear: both;
-	display: block;
-	background-color:#F4F4F4;
 	
 	}
 
 .footer {
 	width:100%;
 	height:10%;
-	float: left;
-	display: block;
 		}
-
+		
 /* menu header */
 .navbar navbar-default {
 	color:#00F;}
@@ -37,13 +31,12 @@ body a:hover {
 	padding: 1%;
 	padding:1em;
 	
-
 	}
 .index-lh {
 	text-align:center;
 	width:33%;
 	height:auto;
-
+	
 	}
 
 .index-tk {
@@ -53,18 +46,18 @@ body a:hover {
 	padding:1em;
 	border-right:1px #999 solid;
 	border-left:1px #999 solid;
-
+	
 	}
 
 .index-gy {
 	text-align:center;
 	width:33%;
 	height:auto;
-
+	
 	}
 
 .xemthem {
-	text-align:right;
+	text-align:right;	
 	}
 .xemthem a{
 	text-decoration:none;
@@ -92,31 +85,18 @@ body a:hover {
 	font-size:18px;
 	}
 
-.tk-lh-gy {
-	color:#000;
-	text-align:center;
-	font-family:Roboto;
-
-	font-size:28px;
-
-	padding:5px;
-	border-bottom:1px solid #666;
-	margin-bottom:1%;
-	
-}
-
 /* css thẻ tiêu đề h2 */
 
 .h2-kh {
-	color:#F36;
+	color:#F36;		
 	}
 
 .h2-nv {
-	color:#39F;
+	color:#39F;	
 	}
 
 .h2-quyen {
-	color:#936;
+	color:#936;	
 	margin-left: 1%;
 	}
 
@@ -124,3 +104,4 @@ body a:hover {
 	color:#6C6;
 	margin-left:1%;
 	}
+	
