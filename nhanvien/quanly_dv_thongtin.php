@@ -1,3 +1,4 @@
+<script src="https://cdn.datatables.net/fixedheader/3.1.4/js/dataTables.fixedHeader.min.js"></script>
    <script language="javascript">
       $(document).ready(function() {
           var table = $('#tablespa').DataTable( {
@@ -26,14 +27,13 @@
     </script>
 <?php
     include_once("csdl/ketnoi.php");
-    session_start();
 ?>  
         <a href="quanly_dv_thongtin.php"><h2 class="h2-dv">Thông tin dịch vụ</h2></a>
         <hr />
         <p>
         <a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="tainguyen/hinhanh/add.png" width="16" height="16" border="0" /> Thêm mới</a>
         </p>
-        <form name="fMain" id="fMain" method="post" action="xuly_dv.php">
+        <form name="fMain" id="fMain" method="post" action="nhanvien/xuly_dv.php">
         <table id="tablespa" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -66,7 +66,7 @@
               <img src='tainguyen/hinhanh/edit.png' border='0'  /></a></td>
               
               <td align='center' class='cotNutChucNang'>
-              <a href="xuly_dv.php?ma=<?php echo $row['DV_MA']; ?>" onClick="return deleteConfirm()">
+              <a href="nhanvien/xuly_dv.php?ma=<?php echo $row['DV_MA']; ?>" onClick="return deleteConfirm()">
               <img src='tainguyen/hinhanh/delete.png' border='0' /></a>
               </td>
             </tr>
@@ -94,7 +94,7 @@
             <div class="modal-content" style="background-color: white;">
             <h2 class="h2-dv">Thêm Dịch Vụ </h2>
             <hr />
-                <form id="fThemMoi" name="fThemMoi" method="post" action="xuly_dv.php" class="form-horizontal" role="form">
+                <form id="fThemMoi" name="fThemMoi" method="post" action="nhanvien/xuly_dv.php" class="form-horizontal" role="form">
                     <div class="form-group">
                         <label for="txtTen" class="col-sm-2 control-label">Tên dịch vụ:  </label>
                         <div class="col-sm-9">
@@ -132,7 +132,7 @@
             <div class="modal-content" style="background-color: white;">
             <h2 class="h2-dv"> Cập nhật Dịch Vụ </h2>
             <hr />
-                <form id="fCapNhat" name="fCapNhat" method="post" action="xuly_dv.php" class="form-horizontal" role="form">
+                <form id="fCapNhat" name="fCapNhat" method="post" action="nhanvien/xuly_dv.php" class="form-horizontal" role="form">
                 <input type="hidden" name="dv_ma" id="dv_ma" value="">
                         <div class="form-group">
                             <label for="txtTen" class="col-sm-2 control-label">Tên dịch vụ:  </label>
@@ -190,11 +190,12 @@
             inp = inp ? parseInt( inp, 10 ) : 0;
             $this.val( function() {
                         return ( inp === 0 ) ? "" : inp.toLocaleString( "en-US" );
-                    } );
+                    });
             });     
         });
     })(jQuery);
     /* End function tách số tiền fThemMoi */
+
     /* function tách số tiền fCapNhat */
     (function($, undefined) {
     $(function() {
@@ -218,7 +219,7 @@
     function CapNhatDV(a) {
         var dv_ma = a.id;
         $.ajax({
-            url:"xuly_dv.php",
+            url:"nhanvien/xuly_dv.php",
             method:"GET",
             data: {"dv_ma": dv_ma},
             success: function(response){
