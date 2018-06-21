@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="stylesheet" href="../tainguyen/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../tainguyen/css/css.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="../tainguyen/css/bootstrap.min.css">
+
     <script src="../tainguyen/js/jquery-3.2.0.min.js"></script>
     <script src="../tainguyen/js/jquery.dataTables.min.js"></script>
     <script src="../tainguyen/js/dataTables.bootstrap.min.js"></script>

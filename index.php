@@ -22,7 +22,7 @@
     <header>
 
 		<div class="inner relative">
-			<a class="logo" href="index.php"><img src="tainguyen/hinhanh/logo.png" width="50px" height="40px" alt="Panda Spa"></a>
+			<a class="logo" href="index.php"><img src="tainguyen/hinhanh/logo.png" width="50px" height="40px" alt=""></a>
 			<a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a>
 			<nav id="navigation">
 				<ul id="main-menu">
