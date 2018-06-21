@@ -1,5 +1,5 @@
 <?php
-	$server_username="quan";
+	$server_username="root";
 	$server_password="";
 	$server_host="localhost";
 	$database="cskh_spa";
