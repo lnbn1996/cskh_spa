@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="tainguyen/js/jquery.js"></script>
 	<script type="text/javascript" src="tainguyen/js/function.js"></script>
 	<!-- JS (load angular, ui-router, and our custom file) -->
-    <script src=https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.js"></script>
     <script src="tainguyen/js/routing.js"></script>
