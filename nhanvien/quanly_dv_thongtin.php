@@ -1,19 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<link rel="stylesheet" type="text/css" href="../tainguyen/css/css.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="../tainguyen/css/bootstrap.min.css">
-    <script src="../tainguyen/js/jquery-3.2.0.min.js"></script>
-    <script src="../tainguyen/js/jquery.dataTables.min.js"></script>
-    <script src="../tainguyen/js/dataTables.bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/fixedheader/3.1.4/js/dataTables.fixedHeader.min.js"></script>
-    <!-- For Modal -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- Others Script -->
-    <script src="../tainguyen/js/funcs.js"></script>
-    <!-- Script for DataTable to Show -->
-    <script language="javascript">
+   <script language="javascript">
       $(document).ready(function() {
           var table = $('#tablespa').DataTable( {
           responsive: true,
@@ -40,17 +25,13 @@
       });
     </script>
 <?php
-    include_once("../csdl/ketnoi.php");
+    include_once("csdl/ketnoi.php");
     session_start();
 ?>  
-<title>Dịch vụ</title>
-</head>
-
-<body>
         <a href="quanly_dv_thongtin.php"><h2 class="h2-dv">Thông tin dịch vụ</h2></a>
         <hr />
         <p>
-        <a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="../tainguyen/hinhanh/add.png" alt="Thêm mới" width="16" height="16" border="0" /> Thêm mới</a>
+        <a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="tainguyen/hinhanh/add.png" width="16" height="16" border="0" /> Thêm mới</a>
         </p>
         <form name="fMain" id="fMain" method="post" action="xuly_dv.php">
         <table id="tablespa" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -61,8 +42,8 @@
                     <th><strong>Tên dịch vụ</strong></th>
                     <th><strong>Nội dung </strong></th>
                     <th><strong>Giá tiền (VND) </strong></th>
-                    <th width="100"><strong>Cập nhật</strong></th>
-                    <th width="100"><strong>Xóa</strong></th>
+                    <th><strong>Cập nhật</strong></th>
+                    <th><strong>Xóa</strong></th>
                 </tr>
              </thead>
 
@@ -82,11 +63,11 @@
              
               <td align='center' class='cotNutChucNang'>
               <a href="#modalCapNhat" data-target="#modalCapNhat" data-toggle="modal" id="<?php echo $row['DV_MA']; ?>" onClick="CapNhatDV(this);"">
-              <img src='../tainguyen/hinhanh/edit.png' border='0'  /></a></td>
+              <img src='tainguyen/hinhanh/edit.png' border='0'  /></a></td>
               
               <td align='center' class='cotNutChucNang'>
               <a href="xuly_dv.php?ma=<?php echo $row['DV_MA']; ?>" onClick="return deleteConfirm()">
-              <img src='../tainguyen/hinhanh/delete.png' border='0' /></a>
+              <img src='tainguyen/hinhanh/delete.png' border='0' /></a>
               </td>
             </tr>
             <?php
@@ -104,7 +85,7 @@
             	<input name="btnXoa" type="submit" value="Xóa mục chọn" id="btnXoa" onClick='return deleteConfirm()' class="btn btn-primary" />
             </div>
         </div><!--Nút chức nang-->       
- </form>
+    </form>
 
 <!-- Modal thêm dịch vụ -->
     <div class="modal fade" id="modalThemMoi" role="dialog">
@@ -182,8 +163,6 @@
         </div>
     </div>
 <!-- End Modal cập nhật dv -->
-</body>
-</html>
 <script>
     /* reset modal when closed */
     $('#modalThemMoi').on('hidden.bs.modal', function () {

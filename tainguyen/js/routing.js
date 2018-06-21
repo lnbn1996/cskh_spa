@@ -1,13 +1,7 @@
 var routerApp = angular.module('routerApp', ['ui.router']);
 
-routerApp.config(function($stateProvider, $urlRouterProvider) {
-
-    $urlRouterProvider.otherwise('/home');
-    appModule.config(['$locationProvider', function($locationProvider) {
-      $locationProvider.hashPrefix('');
-    }]);
+routerApp.config(function($stateProvider) {
     $stateProvider
-
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
@@ -17,7 +11,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('dichvu', {
             url: '/dichvu',
-            templateUrl: 'dichvu.php'    
+            templateUrl: 'nhanvien/quanly_dv_thongtin.php'    
         });
 
 });

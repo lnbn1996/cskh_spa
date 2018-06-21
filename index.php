@@ -22,23 +22,25 @@
 	<!-- JS (load angular, ui-router, and our custom file) -->
     <script src=https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.js"></script>
     <script src="tainguyen/js/routing.js"></script>
 
 	<title>Trang chủ </title>
+
 </head>
-<body ng-app="routerApp">
+<body>
 <!-- Header -->
 <div id="wrap">
     <header>
+
 		<div class="inner relative">
 			<a class="logo" href="index.php"><img src="tainguyen/hinhanh/logo.png" width="50px" height="40px" alt=""></a>
 			<a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a>
 			<nav id="navigation">
 				<ul id="main-menu">
-					<li class="current-menu-item"><a ui-sref="home">Home</a></li>
+					<li class="current-menu-item"><a href="index.php">Home</a></li>
 					<li>
-						<a href="">Dịch vụ</a>
+						<a href="index.php?khoatrang=qldv">Dịch vụ</a>
 					</li>
 					<li>
 						<a href="">Khách hàng</a>
@@ -62,11 +64,20 @@
 
 <!-- Content  -->
 
-<div class="content" >
-  <?php
-    //include ("noidungtrangchu.php");
-  ?>
-<div ui-view></div>
+<div class="content">
+    <?php
+	if(isset($_GET['khoatrang']))
+	{
+		$khoatrang = $_GET['khoatrang'];
+		if($khoatrang=="qldv"){
+			include_once("nhanvien/quanly_dv_thongtin.php");
+		}
+	}
+	else{
+		include("noidungtrangchu.php");
+	}
+	?>
+<ui-view></ui-view>
 </div>
 <!-- End / Content  -->
 
