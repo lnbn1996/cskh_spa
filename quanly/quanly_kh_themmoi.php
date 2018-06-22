@@ -148,7 +148,7 @@
 			var count=0;
 			for (var i = 0; i < document.getElementById("form1").elements.length; i++) {
 			 	x=document.getElementById("form1").elements[i];
-			 	if (x.name=="txtTen" && !/^[a-z0-9_-]{1,}$/.test(document.form1.txtTen.value)){
+			 	if (x.name=="txtTen" && !/^[a-zA-Z_-]{1,}$/.test(document.form1.txtTen.value)){
 			 		alert("Tên không hợp lệ");
 			 		return false;
 			 	} else if(x.name=="grpGioiTinh"){
