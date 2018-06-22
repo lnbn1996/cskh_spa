@@ -1,35 +1,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- Link -->
-<meta charset="utf-8" />
-<<<<<<< HEAD
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/css.css" />
-<script src="js/jquery-3.2.0.min.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.min.js"></script>
-=======
-<link rel="stylesheet" href="../tainguyen/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="../tainguyen/css/css.css" />
+<link rel="stylesheet" href="../tainguyen/css/bootstrap.min.css">
 <script src="../tainguyen/js/jquery-3.2.0.min.js"></script>
 <script src="../tainguyen/js/jquery.dataTables.min.js"></script>
 <script src="../tainguyen/js/dataTables.bootstrap.min.js"></script>
->>>>>>> dd6f62abb9a3debb8766c701c586c01a0330099b
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Thêm nhân viên</title>
+<title>Cập nhật khách hàng</title>
 </head>
 
 <body>
 <div class="container">
-	<h2 class="h2-nv">Thêm thông tin nhân viên </h2>
+	<h2 class="h2-kh">Cập nhật thông tin khách hàng</h2>
     <hr />
-			 	<form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">
+ <!-- thêm giá trị php sẵn có vào ô <value> để cập nhật -->
+    <form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">
 <!-- ten khach hang -->
 					<div class="form-group">
-						    <label for="txtTen" class="col-sm-2 control-label">Tên nhân viên:  </label>
+						    <label for="txtTen" class="col-sm-2 control-label">Tên khách hàng:  </label>
 							<div class="col-sm-10">
-							      <input type="text" name="txtTen" id="txtTen" class="form-control" placeholder="Tên nhân viên" value=''>
+							      <input type="text" name="txtTen" id="txtTen" class="form-control" placeholder="Tên khách hàng" value=''>
 							</div>
 					</div>
 <!-- gioi tinh -->
@@ -118,29 +109,30 @@
 					<div class="form-group">
 						 <label for="lblEmail" class="col-sm-2 control-label">Email:  </label>
 <div class="col-sm-10">
-			<input type="text" name="txtEmail" id="txtEmail" value="" class="form-control" placeholder="nhanvien@gmail.com"/>
-<<<<<<< HEAD
-            		
-           
-</div>
-					 </div>
-
-					
-						
-=======
+			<input type="text" name="txtEmail" id="txtEmail" value="" class="form-control" placeholder="khachhang@gmail.com"/>
 
 
 </div>
 					 </div>
-
-
-
->>>>>>> dd6f62abb9a3debb8766c701c586c01a0330099b
+<!-- can nang -->
+					 <div class="form-group">
+						 <label for="lblDiaChi" class="col-sm-2 control-label">Cân nặng:  </label>
+						 <div class="col-sm-10">
+							 <input type="text" name="txtCanNang" id="txtCanNang" value="" class="form-control" placeholder="Cân Nặng"/>
+						 </div>
+						 </div>
+<!--chieu cao -->
+						 <div class="form-group">
+							 <label for="lblDiaChi" class="col-sm-2 control-label">Chiều cao:  </label>
+							 <div class="col-sm-10">
+								 <input type="text" name="txtCanNang" id="txtCanNang" value="" class="form-control" placeholder="Chiều Cao"/>
+							 </div>
+							 </div>
 
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-						      <input type="submit"  class="btn btn-primary" name="btnThemMoi" id="btnThemMoi" value="Thêm mới"/>
+						      <input type="submit"  class="btn btn-primary" name="btnThemMoi" id="btnThemMoi" value="Cập nhật"/>
                               <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Bỏ qua" onclick="index.php" />
 
 						</div>
@@ -148,9 +140,10 @@
 				</form>
 	</div>
 
+
+
+
+
 </body>
-<<<<<<< HEAD
+
 </html>
-=======
-</html>
->>>>>>> dd6f62abb9a3debb8766c701c586c01a0330099b

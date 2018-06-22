@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<<<<<<< HEAD
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <script src="js/jquery-3.2.0.min.js"></script>
@@ -9,12 +10,25 @@
 <script src="js/dataTables.bootstrap.min.js"></script>
 <title>Cập nhật nhân viên</title>
 </head>
+=======
+<link rel="stylesheet" href="../tainguyen/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../tainguyen/css/css.css" />
+<script src="../tainguyen/js/jquery-3.2.0.min.js"></script>
+<script src="../tainguyen/js/jquery.dataTables.min.js"></script>
+<script src="../tainguyen/js/dataTables.bootstrap.min.js"></script>
+<title>Cập nhật nhân viên</title>
+</head> 
+>>>>>>> dd6f62abb9a3debb8766c701c586c01a0330099b
 
 <body>
 <div class="container">
 	<h2 class="h2-nv">Cập nhật thông tin nhân viên</h2>
     <hr />
+<<<<<<< HEAD
  <!-- thêm giá trị php sẵn có vào ô <value> để cập nhật -->   
+=======
+ <!-- thêm giá trị php sẵn có vào ô <value> để cập nhật -->
+>>>>>>> dd6f62abb9a3debb8766c701c586c01a0330099b
     <form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">
 <!-- ten khach hang -->
 					<div class="form-group">
@@ -110,8 +124,13 @@
 						 <label for="lblEmail" class="col-sm-2 control-label">Email:  </label>
 <div class="col-sm-10">
 			<input type="text" name="txtEmail" id="txtEmail" value="" class="form-control" placeholder="nhanvien@gmail.com"/>
+<<<<<<< HEAD
             		
            
+=======
+
+
+>>>>>>> dd6f62abb9a3debb8766c701c586c01a0330099b
 </div>
 					 </div>
 
@@ -135,9 +154,18 @@
 	</div>
 
 
+<<<<<<< HEAD
     
     
     
 </body>
 
 </html>
+=======
+
+
+
+</body>
+
+</html>
+>>>>>>> dd6f62abb9a3debb8766c701c586c01a0330099b

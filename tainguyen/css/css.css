@@ -1,0 +1,136 @@
+
+body a:hover {
+	text-decoration: none;
+}
+
+/* index */
+
+
+
+.content {
+
+	width:100%;
+	float:left;
+	clear: both;
+	display: block;
+	background-color:#fff;
+	margin: 1%;
+}
+
+
+.header {
+	width:100%;
+	height:5%;
+
+	}
+
+
+
+.footer {
+	width:100%;
+	float: left;
+	display: block;
+	
+		}
+
+/* menu header */
+
+
+/* content index */
+.index-lh, .index-tk, .index-gy {
+	float:left;
+	padding: 1%;
+	padding:1em;
+
+	}
+.index-lh {
+	text-align:center;
+	width:33%;
+	height:auto;
+
+	}
+
+.index-tk {
+	text-align:center;
+	width:33%;
+	height:auto;
+	padding:1em;
+	border-right:1px #999 solid;
+	border-left:1px #999 solid;
+
+	}
+
+.index-gy {
+	text-align:center;
+	width:33%;
+	height:auto;
+
+	}
+
+.xemthem {
+	text-align:right;
+	}
+.xemthem a{
+	text-decoration:none;
+	color:#006;
+	}
+	.xemthem a:hover{
+	color:#900;
+	text-decoration:none;
+	}
+
+
+
+/* tim kiem */
+
+.tk-lieutrinh, .tk-khachhang {
+	text-align:left;
+	font-size:17px;
+	font-weight:500;
+
+	}
+
+.tt-lt-kh {
+	padding-bottom:1%;
+	font:Georgia, "Times New Roman", Times, serif;
+	font-size:18px;
+	}
+
+.tk-lh-gy {
+	color:#000;
+	text-align:center;
+	font-family:Roboto;
+
+	font-size:28px;
+
+	padding:5px;
+	border-bottom:1px solid #666;
+	margin-bottom:1%;
+
+}
+
+/* css thẻ tiêu đề h2 */
+
+.h2-kh {
+	color:#F36;
+	}
+
+.h2-nv {
+	color:#39F;
+	}
+
+.h2-quyen {
+	color:#936;
+	margin-left: 1%;
+	}
+
+.h2-dv {
+	color:#6C6;
+	margin-left:1%;
+	}
+
+.footer-title {
+	font-size: 28px;
+	color: #fff;
+	font-family:Roboto;
+}
