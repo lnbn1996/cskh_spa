@@ -148,7 +148,7 @@
 			var count=0;
 			for (var i = 0; i < document.getElementById("form1").elements.length; i++) {
 			 	x=document.getElementById("form1").elements[i];
-			 	if (x.name=="txtTen" && !/^[a-zA-Z_-]{1,}$/.test(document.form1.txtTen.value)){
+			 	if (x.name=="txtTen" && !/^[a-zA-Z_- ]{1,}$/.test(document.form1.txtTen.value)){
 			 		alert("Tên không hợp lệ");
 			 		return false;
 			 	} else if(x.name=="grpGioiTinh"){
@@ -187,7 +187,7 @@
 						alert ("Xin chọn năm sinh");
 						return false;
 					}
-				} else if (x.name=="txtDiaChi" && !/^[a-zA-Z0-9]+$/.test(document.form1.txtDienThoai.value)){
+				} else if (x.name=="txtDiaChi" && !/^[a-zA-Z0-9 ]+$/.test(document.form1.txtDienThoai.value)){
 					alert ("Địa chỉ không hợp lệ");
 					return false;
 				} else if (x.name=="txtDienThoai" && !/^[0-9]{10,11}$/.test(document.form1.txtDienThoai.value)){
