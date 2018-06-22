@@ -1,8 +1,10 @@
+<script src="tainguyen/js/jquery.dataTables.min.js"></script>
+<script src="tainguyen/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular.js"></script>
 <script src="https://cdn.datatables.net/fixedheader/3.1.4/js/dataTables.fixedHeader.min.js"></script>
-   <script language="javascript">
+ <script language="javascript">
       $(document).ready(function() {
-          var table = $('#tablespa').DataTable( {
-          responsive: true,
+          var table = $('#tablespa').DataTable({
           "language": {
             "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang:",
             "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu:",

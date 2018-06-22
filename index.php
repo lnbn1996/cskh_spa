@@ -20,9 +20,10 @@
 	<!-- Javascript -->
 	<script src="tainguyen/js/jquery-3.2.0.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script src="https://cdn.datatables.net/fixedheader/3.1.4/js/dataTables.fixedHeader.min.js"></script>
-    <script src="tainguyen/js/jquery.dataTables.min.js"></script>
-    <script src="tainguyen/js/dataTables.bootstrap.min.js"></script>
+
+<!--     <script src="tainguyen/js/jquery.dataTables.min.js"></script>
+    <script src="tainguyen/js/dataTables.bootstrap.min.js"></script> -->
+
 	<!-- JS (load angular, ui-router, and our custom file) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"></script>
@@ -46,7 +47,7 @@
 				<ul id="main-menu">
 					<li class="current-menu-item"><a href="index.php">Home</a></li>
 					<li>
-						<a href="index.php?khoatrang=qldv">Dịch vụ</a>
+						<a href="index.php?key=qldv">Dịch vụ</a>
 					</li>
 					<li>
 						<a href="">Khách hàng</a>
@@ -55,7 +56,7 @@
 						<a href="">Nhân viên</a>
 					</li>
 					<li>
-						<a href="">Lịch hẹn</a>
+						<a href="index.php?key=ttlh">Lịch hẹn</a>
 					</li>
 					<li>
 						<a href="">Phân quyền</a>
@@ -72,11 +73,13 @@
 
 <div class="content">
     <?php
-	if(isset($_GET['khoatrang']))
+	if(isset($_GET['key']))
 	{
-		$khoatrang = $_GET['khoatrang'];
-		if($khoatrang=="qldv"){
+		$key = $_GET['key'];
+		if($key=="qldv"){
 			include_once("nhanvien/quanly_dv_thongtin.php");
+		}elseif($key=="ttlh"){
+			include_once("nhanvien/quanly_tt_lichhen.php");
 		}
 	}
 	else{
