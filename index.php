@@ -1,7 +1,11 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<!-- Bootsrap -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
@@ -12,18 +16,22 @@
 	<link rel="stylesheet" type="text/css" href="tainguyen/css/menu.css" />
 	<link rel="stylesheet" href="tainguyen/css/style.css">
 	<link rel="stylesheet" type="text/css" href="tainguyen/css/css.css" />
-	<link rel="stylesheet" type="text/css" href="tainguyen/css/custom-style.css" />
 	<link rel="stylesheet" href="tainguyen/css/responsive.css">
 	<!-- Javascript -->
 	<script src="tainguyen/js/jquery-3.2.0.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="tainguyen/js/jquery.js"></script>
-	<script type="text/javascript" src="tainguyen/js/function.js"></script>
+
+<!--     <script src="tainguyen/js/jquery.dataTables.min.js"></script>
+    <script src="tainguyen/js/dataTables.bootstrap.min.js"></script> -->
+
 	<!-- JS (load angular, ui-router, and our custom file) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.0/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.0/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.js"></script>
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.js"></script> -->
     <script src="tainguyen/js/routing.js"></script>
+    <script src="tainguyen/js/funcs.js"></script>
+    <script type="text/javascript" src="tainguyen/js/jquery.js"></script>
+	<script type="text/javascript" src="tainguyen/js/function.js"></script>
 
 	<title>Trang chủ </title>
 
@@ -32,7 +40,6 @@
 <!-- Header -->
 <div id="wrap">
     <header>
-
 		<div class="inner relative">
 			<a class="logo" href="index.php"><img src="tainguyen/hinhanh/logo.png" width="50px" height="40px" alt=""></a>
 			<a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a>
@@ -40,7 +47,7 @@
 				<ul id="main-menu">
 					<li class="current-menu-item"><a href="index.php">Home</a></li>
 					<li>
-						<a href="index.php?khoatrang=qldv">Dịch vụ</a>
+						<a href="index.php?key=qldv">Dịch vụ</a>
 					</li>
 					<li>
 						<a href="">Khách hàng</a>
@@ -49,7 +56,7 @@
 						<a href="">Nhân viên</a>
 					</li>
 					<li>
-						<a href="">Lịch hẹn</a>
+						<a href="index.php?key=ttlh">Lịch hẹn</a>
 					</li>
 					<li>
 						<a href="">Phân quyền</a>
@@ -66,18 +73,19 @@
 
 <div class="content">
     <?php
-	if(isset($_GET['khoatrang']))
+	if(isset($_GET['key']))
 	{
-		$khoatrang = $_GET['khoatrang'];
-		if($khoatrang=="qldv"){
+		$key = $_GET['key'];
+		if($key=="qldv"){
 			include_once("nhanvien/quanly_dv_thongtin.php");
+		}elseif($key=="ttlh"){
+			include_once("nhanvien/quanly_tt_lichhen.php");
 		}
 	}
 	else{
 		include("noidungtrangchu.php");
 	}
 	?>
-<ui-view></ui-view>
 </div>
 <!-- End / Content  -->
 

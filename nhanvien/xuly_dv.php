@@ -28,12 +28,12 @@
 					if(mysqli_num_rows($result)==0)
 					{
 					   mysqli_query($conn, "INSERT INTO dichvu (dv_ten, dv_noidung, dv_giatien, dv_trangthai) VALUES ('$ten','$noidung','$gia','$trangthai')");
-					   echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';
+					   echo '<meta http-equiv="refresh" content="0;URL=../index.php?khoatrang=qldv"/>';
 					}
 					else
 					{
 						echo "<script type='text/javascript'>alert('Trùng tên dịch vụ!')</script>";
-						echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';
+						echo '<meta http-equiv="refresh" content="0;URL=../index.php?khoatrang=qldv"/>';
 					}
 				}
 
@@ -44,11 +44,11 @@
 	        $dv_ma = $_GET["ma"];
 	        $query=mysqli_query($conn, "DELETE FROM dichvu where dv_ma=$dv_ma");
 	        if($query){
-	        	echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';
+	        	echo '<meta http-equiv="refresh" content="0;URL=../index.php?khoatrang=qldv"/>';
 			}else
 		    {
 		          echo "<script type='text/javascript'>alert('Dịch vụ yêu cầu xoá Không tồn tại!')</script>";
-		          echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';
+		          echo '<meta http-equiv="refresh" content="0;URL=../index.php?khoatrang=qldv"/>';
 		    }
 	}
 	if(isset($_POST['btnXoa'])) {
@@ -57,11 +57,11 @@
 	        {
 	          $dv_ma = $_POST['checkbox'][$i];
 	          mysqli_query($conn,"DELETE FROM dichvu where dv_ma=$dv_ma");
-	          echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';
+	          echo '<meta http-equiv="refresh" content="0;URL=../index.php?khoatrang=qldv"/>';
 	        }
 	    }else{
 			echo "<script type='text/javascript'>alert('Bạn chưa chọn dịch vụ cần xoá!')</script>";
-			echo '<meta http-equiv="refresh" content="0;URL=quanly_dv_thongtin.php"/>';		
+			echo '<meta http-equiv="refresh" content="0;URL=../index.php?khoatrang=qldv"/>';		
 		}
 	}
 
@@ -85,12 +85,12 @@
             if($loi!="")
             {
             	echo "<script type='text/javascript'>alert('$loi')</script>";
-                echo "<script type='text/javascript'>document.location = 'quanly_dv_thongtin.php';</script>";
+                echo "<script type='text/javascript'>document.location = ../index.php?khoatrang=qldv';</script>";
             }
             else
             {   
 	            mysqli_query($conn, "UPDATE dichvu SET dv_ten = '$ten', dv_noidung='$noidung', dv_giatien='$gia' WHERE dv_ma=$ma");
-	            echo "<script type='text/javascript'>document.location = 'quanly_dv_thongtin.php';</script>";
+	            echo "<script type='text/javascript'>document.location = '../index.php?khoatrang=qldv';</script>";
             }
         }	
 ?> 
