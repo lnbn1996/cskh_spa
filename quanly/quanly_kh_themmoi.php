@@ -155,7 +155,7 @@
 			 		count=0;
 			 		for (var j = 0; j < document.form1.grpGioiTinh.length; j++) {
 						if (document.form1.grpGioiTinh[j].checked==true) break; else count++;
-					}
+					} 
 					if (count==document.form1.grpGioiTinh.length) {
 						alert ("Xin chọn giới tính");
 						return false;
