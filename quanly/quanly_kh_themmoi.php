@@ -224,8 +224,8 @@
 			$dienthoai=$_POST["txtDienThoai"];
 			$email=$_POST["txtEmail"];
 			$loaida=$_POST["txtLoaiDa"];
-			$cannang=$_POST["txtCanNang"];
-			$chieucao= $_POST["txtChieuCao"];
+			$cannang=$_POST["txtCanNang"]
+;			$chieucao= $_POST["txtChieuCao"];
 			$sql="SELECT * FROM khachhang";
 			$query=mysqli_query($conn,$sql);
 			$row=mysqli_num_rows($query)+1;
