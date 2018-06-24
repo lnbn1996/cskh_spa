@@ -82,11 +82,11 @@
         
         
         <!--Nút Thêm mới , xóa tất cả-->
-        <div class="row" style="background-color:#FFF"><!--Nút chức nang-->
-            <div class="col-md-12">
-            	<input name="btnXoa" type="submit" value="Xóa mục chọn" id="btnXoa" onClick='return deleteConfirm()' class="btn btn-primary" />
+    <div class="row" style="background-color:#FFF">
+        <div class="col-md-12">
+           	<input name="btnXoa" type="submit" value="Xóa mục chọn" id="btnXoa" onClick='return deleteConfirm()' class="btn btn-primary" />
             </div>
-        </div><!--Nút chức nang-->       
+        </div>    
     </form>
 
 <!-- Modal thêm dịch vụ -->
