@@ -3,6 +3,10 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/css.css" />
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- Latest compiled and minified CSS & JS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script src="js/jquery-3.2.0.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
@@ -24,7 +28,7 @@
  <h2 class="h2-kh">Quản lý thông tin Khách Hàng</h2>
  <hr />
         <p>
-        	<a href=""><img src="img/add.png" alt="Thêm mới" width="16" height="16" border="0" /> Thêm mới</a>
+        	<a href=""><img src="../tainguyen/hinhanh/add.png" alt="Thêm mới" width="16" height="16" border="0" /> Thêm mới</a>
         </p>
         <form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">
         <table id="tablespa" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -38,6 +42,7 @@
                     <th><strong>Địa chỉ</strong></th>
                     <th><strong>Điện thoại</strong></th>
                     <th><strong>Email</strong></th>
+                    <th><strong>Loại da</strong></th>
                     <th><strong>Cân nặng</strong></th>
                     <th><strong>Chiều cao</strong></th>
                     <th><strong>Cập nhật</strong></th>
@@ -58,18 +63,19 @@
               <td><?php  ?></td>
               <td><?php  ?></td>
               <td><?php  ?></td>
+              <td><?php  ?></td>
               
               
             
              
               <td align='center' class='cotNutChucNang'>
               <a href="">
-              <img src='img/edit.png' border='0'/></a>
+              <img src='../tainguyen/hinhanh/edit.png' border='0'/></a>
               </td>
               
               <td align='center' class='cotNutChucNang'>
               	<a onclick="return deleteConfirm()" href="">
-              	<img src='img/delete.png' border='0' /></a>
+              	<img src='../tainguyen/hinhanh/delete.png' border='0' /></a>
               </td>
             </tr>
          
