@@ -29,15 +29,23 @@
 	}
 	if(isset($_POST["btnCapNhat"]))
         {
+        	date_default_timezone_set('Asia/Ho_Chi_Minh');
             $ma = $_POST["lh_ma"];
-            $ngayhen = $_POST["NgayHen"];
             $giohen = $_POST["GioHen"];
-            $trangthai = $_POST["rdXacNhan"]; 
-	        $query=mysqli_query($conn, "UPDATE lichhen SET lh_ngay = STR_TO_DATE('$ngayhen','%d-%m-%Y'), lh_thoigian='$giohen', lh_trangthai='$trangthai' WHERE lh_ma='$ma' ");
-	        if($query){
-	        	echo "<script type='text/javascript'>document.location = '../index.php?key=ttlh';</script>";
-	        }else{
-	        	echo mysqli_error($conn);
-	        }
+            $trangthai = $_POST["rdXacNhan"];
+            $ngay = strtotime($_POST["NgayHen"]);
+            $ngayhen = date('Y-m-d',$ngay);
+            if($ngayhen >= date("Y-m-d")){ 
+		        $query=mysqli_query($conn, "UPDATE lichhen SET lh_ngay = '$ngayhen', lh_thoigian='$giohen', lh_trangthai='$trangthai' WHERE lh_ma='$ma' ");
+		        if($query){
+		        	echo "<script type='text/javascript'>document.location = '../index.php?key=ttlh';</script>";
+		        }else{
+		        	echo "<script type='text/javascript'>alert('Đã xảy ra lỗi, không xác nhận lịch hẹn được!')</script>";
+		          	echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=ttlh"/>';
+		        }
+	    	}else{
+	    		echo "<script type='text/javascript'>alert('Ngày hẹn phải là hôm nay hoặc những ngày sau!')</script>";
+		        echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=ttlh"/>';
+	    	}
         }	
 ?>

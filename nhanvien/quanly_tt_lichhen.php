@@ -136,21 +136,29 @@
                                                       <input type="text" name="txtNoiDungHen" id="txtNoiDungHen" class="form-control" value="" disabled>
                                                 </div>
                                         </div>
-                                        <!-- Trạng thái hẹn -->
+                                        <!-- Trạng thái hẹn
                                         <div class="form-group">
                                                 <label for="txtTTHen" class="col-sm-3 control-label">Trạng thái hiện tại:  </label>
                                                 <div class="col-sm-8">
                                                       <input type="text" name="txtTTHen" id="txtTTHen" class="form-control" value="" disabled>
                                                 </div>
-                                        </div>
+                                        </div> -->
                                         <!-- Xác nhận -->
                                         <div class="form-group">
                                                 <label for="txtTTHen" class="col-sm-3 control-label">Xác nhận:  </label>
                                                 <div class="col-sm-8">
-                                                    <input type="radio" id="rdXacNhan1" name="rdXacNhan" value="1" />
-                                                    <label for="rdXacNhan">Đồng ý</label> <br>
-                                                    <input type="radio" id="rdXacNhan2" name="rdXacNhan" value="2" />
-                                                    <label for="rdXacNhan">Huỷ</label>
+                                                    <label class="radio-inline for="rdXacNhan0">
+                                                        <input type="radio" id="rdXacNhan0" name="rdXacNhan" value="0" />
+                                                        Chưa xác nhận
+                                                    </label>
+                                                    <label class="radio-inline for="rdXacNhan1">
+                                                        <input type="radio" id="rdXacNhan1" name="rdXacNhan" value="1" />
+                                                        Đồng ý
+                                                    </label>
+                                                    <label class="radio-inline for="rdXacNhan2">
+                                                        <input type="radio" id="rdXacNhan2" name="rdXacNhan" value="2" />
+                                                        Huỷ
+                                                    </label>
                                                 </div>
                                         </div>
                                         <div class="form-group">
@@ -181,12 +189,16 @@
                 console.log(response);
                 var obj = JSON.parse(response);
                 var trangthai = "";
+                var lh_trangthai=obj.LH_TRANGTHAI;
                 if(obj.LH_TRANGTHAI == 0){
-                    trangthai="Chưa xác nhận";
+                    //trangthai="Chưa xác nhận";
+                    $('#fCapNhatLH').find(':radio[name=rdXacNhan][value="0"]').prop('checked', true);
                 }else if(obj.LH_TRANGTHAI == 1){
-                    trangthai="Đã xác nhận";
+                    //trangthai="Đã xác nhận";
+                    $('#fCapNhatLH').find(':radio[name=rdXacNhan][value="1"]').prop('checked', true);
                 }else{
-                    trangthai="Đã Huỷ";
+                    //trangthai="Đã Huỷ";
+                    $('#fCapNhatLH').find(':radio[name=rdXacNhan][value="2"]').prop('checked', true);
                 }
                 $("#lh_ma").val(obj.LH_MA);
                 $("#txtTenKH").val(obj.KH_HOTEN);
@@ -195,7 +207,7 @@
                 $("#GioHen").val(obj.LH_THOIGIAN);
                 $("#txtChudeHen").val(obj.LH_CHUDE);
                 $("#txtNoiDungHen").val(obj.LH_NOIDUNG);
-                $("#txtTTHen").val(trangthai);
+                //$("#txtTTHen").val(trangthai);
             }
         });
     }

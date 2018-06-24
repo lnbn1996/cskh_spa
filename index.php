@@ -50,7 +50,7 @@
 						<a href="index.php?key=qldv">Dịch vụ</a>
 					</li>
 					<li>
-						<a href="">Khách hàng</a>
+						<a href="index.php?key=kh">Khách hàng</a>
 					</li>
 					<li>
 						<a href="">Nhân viên</a>
@@ -80,6 +80,10 @@
 			include_once("nhanvien/quanly_dv_thongtin.php");
 		}elseif($key=="ttlh"){
 			include_once("nhanvien/quanly_tt_lichhen.php");
+		}elseif($key=="kh"){
+			include_once("nhanvien/quanly_kh_thongtin.php");
+		}elseif($key=="cnkh"){
+			include_once("nhanvien/quanly_kh_capnhat.php");
 		}
 	}
 	else{

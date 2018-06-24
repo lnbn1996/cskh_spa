@@ -64,7 +64,7 @@
               <td><?php echo number_format($row['DV_GIATIEN']); ?></td>
              
               <td align='center' class='cotNutChucNang'>
-              <a href="#modalCapNhat" data-target="#modalCapNhat" data-toggle="modal" id="<?php echo $row['DV_MA']; ?>" onClick="CapNhatDV(this);"">
+              <a href="#modalCapNhat" data-target="#modalCapNhat" data-toggle="modal" id="<?php echo $row['DV_MA']; ?>" onClick="CapNhatDV(this);" ">
               <img src='tainguyen/hinhanh/edit.png' border='0'  /></a></td>
               
               <td align='center' class='cotNutChucNang'>
