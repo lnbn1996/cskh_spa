@@ -176,9 +176,6 @@
 <!-- Scripts for Modal/ Ajax/ others -->
 <script>
     /* reset modal when closed */
-    $('#modalCapNhatLH').on('hidden.bs.modal', function () {
-        $(this).find('form').trigger('reset');
-    });
     function CapNhatLH(a) {
         var lh_ma = a.id;
         $.ajax({

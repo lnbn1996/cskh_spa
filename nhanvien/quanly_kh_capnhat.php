@@ -5,7 +5,7 @@
 	$result=mysqli_fetch_array($query);
 ?>
 <div class="container">
-	<h2 class="h2-kh">Thêm thông tin khách hàng </h2>
+	<h2 class="h2-kh">Cập nhật thông tin khách hàng </h2>
     <hr />
 			 	<form id="form1" name="form1" method="post" action=<?php echo ("index.php?key=cnkh&id=$makh"); ?> class="form-horizontal" role="form">
 <!-- ten khach hang -->

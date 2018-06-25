@@ -1,4 +1,5 @@
 <?php
+	include("csdl/ketnoi.php");
 	session_start();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -59,7 +60,7 @@
 						<a href="index.php?key=ttlh">Lịch hẹn</a>
 					</li>
 					<li>
-						<a href="">Phân quyền</a>
+						<a href="index.php?key=lt">Liệu trình</a>
 					</li>
 				</ul>
 			</nav>
@@ -78,12 +79,18 @@
 		$key = $_GET['key'];
 		if($key=="qldv"){
 			include_once("nhanvien/quanly_dv_thongtin.php");
+		}elseif($key=="xldv"){
+			include_once("nhanvien/xuly_dv.php");
 		}elseif($key=="ttlh"){
 			include_once("nhanvien/quanly_tt_lichhen.php");
 		}elseif($key=="kh"){
 			include_once("nhanvien/quanly_kh_thongtin.php");
 		}elseif($key=="cnkh"){
 			include_once("nhanvien/quanly_kh_capnhat.php");
+		}elseif($key=="lt"){
+			include_once("nhanvien/quanly_lieutrinh_thongtin.php");
+		}elseif($key=="ltct"){
+			include_once("nhanvien/quanly_lieutrinh_chitiet.php");
 		}
 	}
 	else{

@@ -229,3 +229,8 @@
     include 'csdl/ketnoi.php';
     include ('xuly_kh.php');
 ?>
+<script>
+    $('#modalThemMoi').on('hidden.bs.modal', function () {
+        $(this).find('form').trigger('reset');
+    });
+</script>
