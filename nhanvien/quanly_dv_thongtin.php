@@ -221,7 +221,7 @@
     function CapNhatDV(a) {
         var dv_ma = a.id;
         $.ajax({
-            url:"index.php?key=ltct&ma=LT01",
+            url:"nhanvien/xuly_dv.php",
             method:"GET",
             data: {"dv_ma": dv_ma},
             success: function(response){
@@ -241,14 +241,3 @@
         });
     }
 </script>
-<?php
-    if(isset($_POST['lt_ma']))
-        {
-            $lt_ma = $_POST['lt_ma'];
-            $lt_ten = $_POST['lt_ten'];
-            $lt_mota = $_POST['lt_mota'];
-            $lt_nd = $_POST['lt_mota'];
-            mysqli_query($conn, "UPDATE `LIEUTRINH` SET LT_TEN='$lt_ten', LT_MOTA='$lt_mota', LT_NOIDUNG='$lt_nd' WHERE lt_ma='$lt_ma'");
-            echo "Dô được mà!".$lt_ma.$lt_ten;
-        }
-?>

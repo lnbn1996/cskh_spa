@@ -98,14 +98,14 @@
                                         <div class="form-group">
                                                 <label for="txtTenKH" class="col-sm-3 control-label">Tên Khách hàng:  </label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="txtTenKH" id="txtTenKH" class="form-control" value="" disabled>
+                                                    <input type="text" name="txtTenKH" id="txtTenKH" class="form-control" value="" readonly="readonly">
                                                 </div>
                                         </div>
                                         <!-- Số điện thoại -->
                                         <div class="form-group">
                                                 <label for="txtSdt" class="col-sm-3 control-label">Số điện thoại:  </label>
                                                 <div class="col-sm-8">
-                                                      <input type="text" name="txtSdt" id="txtSdt" class="form-control" value="" disabled>
+                                                      <input type="text" name="txtSdt" id="txtSdt" class="form-control" value="" readonly="readonly">
                                                 </div>
                                         </div>
                                         <!-- Ngày hẹn -->
@@ -126,14 +126,14 @@
                                         <div class="form-group">
                                                 <label for="txtChudeHen" class="col-sm-3 control-label">Chủ đề hẹn:  </label>
                                                 <div class="col-sm-8">
-                                                      <input type="text" name="txtChudeHen" id="txtChudeHen" class="form-control" value="" disabled>
+                                                      <input type="text" name="txtChudeHen" id="txtChudeHen" class="form-control" value="" readonly="readonly">
                                                 </div>
                                         </div>
                                         <!-- Nội dung hẹn -->
                                         <div class="form-group">
                                                 <label for="txtNoiDungHen" class="col-sm-3 control-label">Nội dung hẹn:  </label>
                                                 <div class="col-sm-8">
-                                                      <input type="text" name="txtNoiDungHen" id="txtNoiDungHen" class="form-control" value="" disabled>
+                                                      <input type="text" name="txtNoiDungHen" id="txtNoiDungHen" class="form-control" value="" readonly="readonly">
                                                 </div>
                                         </div>
                                         <!-- Trạng thái hẹn

@@ -54,16 +54,24 @@
             </thead>
 			<tbody>
             <?php
-              $result = mysqli_query($conn, "SELECT LT_MA, LT_TEN, LT_MOTA, LT_NOIDUNG, LT_GIA, LT_NGAYTAO, LT_NGAYCAPNHAT, LT_TRANGTHAI, a.KH_MA, KH_HOTEN, LT_LOAI FROM LIEUTRINH as a, KHACHHANG as b WHERE a.KH_MA=b.KH_MA AND LT_TRANGTHAI=1");
+              $result = mysqli_query($conn, "SELECT LT_MA, LT_TEN, LT_MOTA, LT_NOIDUNG, LT_GIA, LT_NGAYTAO, LT_NGAYCAPNHAT, LT_TRANGTHAI, a.KH_MA, KH_HOTEN, LT_LOAI FROM LIEUTRINH as a, KHACHHANG as b WHERE a.KH_MA=b.KH_MA AND LT_TRANGTHAI!=0");
               while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
               {
+                $malt=$row['LT_MA'];
             ?>            
     			<tr>
+                <?php
+                    $sql=mysqli_query($conn,"SELECT SUM(dv_giatien) as GIA_TIEN FROM lieutrinh a, giaidoan b, giaidoan_dichvu c, dichvu d WHERE a.LT_MA=b.LT_MA and b.GD_MA=c.GD_MA and c.DV_MA=d.DV_MA and a.LT_MA='$malt'");
+                    $r=mysqli_fetch_array($sql,MYSQLI_ASSOC);
+                    $gia=$r['GIA_TIEN'];
+                    // $s1=mysqli_query($conn,"UPDATE LIEUTRINH SET LT_GIA='$gia' WHERE LT_MA='$malt' ");
+                    // $r2=mysqli_fetch_array($sql,MYSQLI_ASSOC);
+                ?>
                     <td><?php echo $row['LT_MA'];  ?></td>
                     <td><?php echo $row['LT_TEN']; ?></td>
                     <td><?php echo $row['LT_MOTA']; ?></td>
                     <td><?php echo $row['LT_NOIDUNG']; ?></td>
-                    <td><?php echo $row['LT_GIA']; ?></td>
+                    <td><?php echo number_format($gia); ?></td>
                     <td><?php echo $row['LT_NGAYTAO']; ?></td>
                     <td><?php echo $row['LT_LOAI']; ?></td>
                     <td><?php echo $row['KH_MA']; ?></td>
@@ -134,7 +142,7 @@
                     <div class="form-group">
                              <label for="noidung" class="col-sm-3 control-label">Nội dung :  </label>
                              <div class="col-sm-8">
-                                <textarea class="form-control" rows="4" name="txtNoiDung" name="txtNoiDung" ></textarea>
+                                <textarea class="form-control" rows="4" name="txtNoiDung" name="txtNoiDung"></textarea>
                              </div>
                     </div>                   
                     <div class="form-group">
