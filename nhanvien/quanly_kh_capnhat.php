@@ -149,7 +149,7 @@
 			{
 				echo "Có lỗi xảy ra, không cập nhật được!"; //echo (mysqli_error($conn));
 			}else{
-				echo "<script type='text/javascript'>document.location = '../index.php?key=cnkh&ma=$makh';</script>";
+				echo "<script type='text/javascript'>document.location = 'index.php?key=cnkh&id=$makh';</script>";
 			}
 		}
 	 ?>  
