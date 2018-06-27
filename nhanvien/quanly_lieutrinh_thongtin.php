@@ -43,7 +43,7 @@
                     <th><strong>Tên liệu trình</strong></th>
                     <th><strong>Mô tả</strong></th>
                     <th><strong>Nội dung</strong></th>
-                    <th><strong>Giá liệu trình</strong></th>
+                    <th><strong>Giá(VND)</strong></th>
                     <th><strong>Ngày tạo</strong></th>
                     <th><strong>Loại liệu trình</strong></th>
                     <th><strong>Mã khách hàng</strong></th>

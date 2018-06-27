@@ -149,7 +149,7 @@
 			{
 				echo "Có lỗi xảy ra, không cập nhật được!"; //echo (mysqli_error($conn));
 			}else{
-				echo '<meta http-equiv="refresh" content="0;URL=index.php?key=cnkh&id=$makh"/>';
+				echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$makh';</script>";
 			}
 		}
 	 ?>  
