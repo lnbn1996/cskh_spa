@@ -50,12 +50,7 @@
 			<!-- <a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a> -->
 			<nav id="navigation">
 				<ul id="main-menu">
-					<li class="current-menu-item">
-						<a>
-							<span class="glyphicon glyphicon-user"></span>  
-							<?php echo " ".$_SESSION["nv_hoten"];?>
-						</a>
-					</li>
+
 					<li>
 						<a href="index.php">Home</a>
 					</li>
@@ -77,6 +72,16 @@
 					<li>
 						<a href="index.php?key=lttk">Liệu trình thống kê</a>
 					</li>
+					<li class="current-menu-item">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<span class="glyphicon glyphicon-user"></span>
+							<?php echo " ".$_SESSION["nv_hoten"];?>
+						</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Xem thông tin </a></li>
+          <li><a href="#">Đăng xuất</a></li>
+        </ul>
+
 				</ul>
 			</nav>
 			<div class="clear"></div>
