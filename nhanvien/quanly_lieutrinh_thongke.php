@@ -40,6 +40,10 @@
 
 <?php
     if(isset($_POST['btnTimKiem'])){
+ header("Content-type: application/octet-stream");
+header("Content-Disposition: attachment; filename=data.xls");
+header("Pragma: no-cache");
+header("Expires: 0");       
         $sql="SELECT e.KH_MA, KH_HOTEN, KH_SDT, KH_DIACHI, a.LT_MA, LT_TEN, b.GD_TEN, GD_NOIDUNG, GD_NGAYBATDAU, GD_NGAYKETTHUC, GD_TRANGTHAI, DV_TEN FROM khachhang e, lieutrinh a, giaidoan b, giaidoan_dichvu c, dichvu d WHERE e.KH_MA=a.KH_MA AND a.LT_MA=b.LT_MA and b.GD_MA=c.GD_MA and c.DV_MA=d.DV_MA AND ";
         if($_POST['NgayBD']!=""){
             $nbd=strtotime($_POST['NgayBD']);

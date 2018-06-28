@@ -40,6 +40,7 @@ if(isset($_POST['NgayBD'])){
         }	
 	//========================= Xuất File Excel=====================//
 	$objExcel = new PHPExcel;
+	// Set properties
 	$objExcel->setActiveSheetIndex(0);
 	$sheet = $objExcel->getActiveSheet()->setTitle('DS_ThongKe');
 
@@ -69,21 +70,25 @@ if(isset($_POST['NgayBD'])){
 		$sheet->setCellValue('I'.$rowCount,$row['GD_NGAYKETTHUC']);
 		$sheet->setCellValue('J'.$rowCount,$row['GD_TRANGTHAI']);
 	}
+	require_once '../tainguyen/vendor/PHPExcel/IOFactory.php';
+	// $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
 
-	$objWriter = new PHPExcel_Writer_Excel2007($objExcel);
-	$filename = 'ds_thongke.xlsx';
+	$filename = 'ds_thongke2.xlsx';
+	$objWriter = PHPExcel_IOFactory::createWriter($objExcel, 'Excel2007');
 	$objWriter->save($filename);
+	// $objWriter->save($filename);
+
 
 	header('Content-Disposition: attachment; filename="' . $filename . '"');  
-	// header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
+	header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
 	header("Content-type: application/octet-stream"); 
 	header('Content-Length: ' . filesize($filename));  
 	header('Content-Transfer-Encoding: binary');  
 	header('Cache-Control: must-revalidate');  
 	header('Pragma: no-cache');
-
-	readfile($filename);  
-	return;
+	header("Expires: 0");
+	$objWriter->save('php://output');
+	// readfile($filename);  
+	// return;
 }
-
 ?>

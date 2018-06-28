@@ -75,11 +75,17 @@
 					<li class="current-menu-item">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 							<span class="glyphicon glyphicon-user"></span>
-							<?php echo " ".$_SESSION["nv_hoten"];?>
+							<?php 
+								if(isset($_SESSION["nv_hoten"])){
+									echo " ".$_SESSION["nv_hoten"];	
+								}else{
+									echo '<meta http-equiv="refresh" content="0;URL=dangnhap.php"/>';
+								}
+							?>
 						</a>
         <ul class="dropdown-menu">
           <li><a href="#">Xem thông tin </a></li>
-          <li><a href="#">Đăng xuất</a></li>
+          <li><a href="dangxuat.php">Đăng xuất</a></li>
         </ul>
 
 				</ul>
