@@ -1,6 +1,10 @@
 <?php
 	include("csdl/ketnoi.php");
 	session_start();
+	if(!isset($_SESSION['tennguoidung'])){
+		echo "<script type='text/javascript'>alert('Mời bạn đăng nhập!')</script>";
+		echo '<meta http-equiv="refresh" content="0;URL=dangnhap.php"/>';
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -43,10 +47,18 @@
     <header>
 		<div class="inner relative">
 			<a class="logo" href="index.php"><img src="tainguyen/hinhanh/logo.png" width="50px" height="40px" alt=""></a>
-			<a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a>
+			<!-- <a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a> -->
 			<nav id="navigation">
 				<ul id="main-menu">
-					<li class="current-menu-item"><a href="index.php">Home</a></li>
+					<li class="current-menu-item">
+						<a>
+							<span class="glyphicon glyphicon-user"></span>  
+							<?php echo " ".$_SESSION["nv_hoten"];?>
+						</a>
+					</li>
+					<li>
+						<a href="index.php">Home</a>
+					</li>
 					<li>
 						<a href="index.php?key=qldv">Dịch vụ</a>
 					</li>
@@ -54,7 +66,7 @@
 						<a href="index.php?key=kh">Khách hàng</a>
 					</li>
 					<li>
-						<a href="">Nhân viên</a>
+						<a href="index.php?key=nv">Nhân viên</a>
 					</li>
 					<li>
 						<a href="index.php?key=ttlh">Lịch hẹn</a>
@@ -96,6 +108,10 @@
 			include_once("nhanvien/quanly_lieutrinh_chitiet.php");
 		}elseif($key=="lttk"){
 			include_once("nhanvien/quanly_lieutrinh_thongke.php");
+		}elseif($key=="nv"){
+			include_once("quanly/quanly_nv_thongtin.php");
+		}elseif($key=="cnnv"){
+			include_once("quanly/quanly_nv_capnhat.php");
 		}
 	}
 	else{

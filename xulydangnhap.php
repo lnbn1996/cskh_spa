@@ -11,6 +11,9 @@
 			if($pass===$row['MATKHAU']){
 				$_SESSION['tennguoidung'] = $row['TENNGUOIDUNG'];
 				$_SESSION['nq_ma'] = $row['NQ_MA'];
+				$q=mysqli_query($conn,"SELECT NV_HOTEN FROM NHANVIEN WHERE TENNGUOIDUNG='$user'");
+				$r=mysqli_fetch_array($q,MYSQLI_ASSOC);
+				$_SESSION['nv_hoten'] = $r['NV_HOTEN']; 
 				header('Location: index.php');
 			}
 			else{

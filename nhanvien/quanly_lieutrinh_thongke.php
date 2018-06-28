@@ -72,14 +72,14 @@
         $query=mysqli_query($conn,$sql);
         if(mysqli_num_rows($query)==0) {echo "Không tồn tài thông tin cần thống kê"; die;}
 ?>
-<!-- <div class="form-group">
+<div class="form-group">
     <div class="col-sm-6">
         <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="exportTableToExcel('tableLTKT', 'data')"/>Excel</button></center>
     </div>
     <div class="col-sm-6">
         <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="printJS('tableLTKT','html');"/>PDF</button></center>
     </div>
-</div> -->
+</div>
         <table id="tableLTKT" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -131,5 +131,34 @@
     } //end if btnTimKiem
 ?>
 <script>
-
+function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+} 
 </script>
