@@ -62,6 +62,9 @@
 					<li>
 						<a href="index.php?key=lt">Liệu trình</a>
 					</li>
+					<li>
+						<a href="index.php?key=lttk">Liệu trình thống kê</a>
+					</li>
 				</ul>
 			</nav>
 			<div class="clear"></div>
@@ -91,6 +94,8 @@
 			include_once("nhanvien/quanly_lieutrinh_thongtin.php");
 		}elseif($key=="ltct"){
 			include_once("nhanvien/quanly_lieutrinh_chitiet.php");
+		}elseif($key=="lttk"){
+			include_once("nhanvien/quanly_lieutrinh_thongke.php");
 		}
 	}
 	else{

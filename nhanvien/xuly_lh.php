@@ -35,8 +35,21 @@
             $trangthai = $_POST["rdXacNhan"];
             $ngay = strtotime($_POST["NgayHen"]);
             $ngayhen = date('Y-m-d',$ngay);
-            if($ngayhen >= date("Y-m-d")){ 
-		        $query=mysqli_query($conn, "UPDATE lichhen SET lh_ngay = '$ngayhen', lh_thoigian='$giohen', lh_trangthai='$trangthai' WHERE lh_ma='$ma' ");
+            /*lay ngay hen cũ đem so sánh*/
+            $slngay=mysqli_query($conn,"SELECT lh_ngay from lichhen where lh_ma='$ma'");
+            $r1=mysqli_fetch_array($slngay,MYSQLI_ASSOC);
+            $old=$r1["lh_ngay"];
+            //=================
+            if($trangthai==2){
+		       	$query=mysqli_query($conn, "UPDATE lichhen SET lh_ngay = '$ngayhen', lh_thoigian='$giohen', lh_trangthai='$trangthai' WHERE lh_ma='$ma' ");
+		        if($query){
+		        	echo "<script type='text/javascript'>document.location = '../index.php?key=ttlh';</script>";
+		        }else{
+		        	echo "<script type='text/javascript'>alert('Đã xảy ra lỗi, không xác nhận lịch hẹn được!')</script>";
+		          	echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=ttlh"/>';
+		        }            	
+            }elseif($ngayhen >= $old){
+		       	$query=mysqli_query($conn, "UPDATE lichhen SET lh_ngay = '$ngayhen', lh_thoigian='$giohen', lh_trangthai='$trangthai' WHERE lh_ma='$ma' ");
 		        if($query){
 		        	echo "<script type='text/javascript'>document.location = '../index.php?key=ttlh';</script>";
 		        }else{
