@@ -31,12 +31,13 @@
             </div>
         </div>
         <div class="form-group">
-             <div class="col-sm-offset-3 col-sm-10">
+            <div class="col-sm-offset-3 col-sm-6">
                 <input type="submit"  class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Hiển Thị"/>
+                <input type="submit"  class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Export" onclick="return setSubmit()"/>
+            </div>
         </div>
-    </div>
 </form>
-<hr />
+
 <?php
     if(isset($_POST['btnTimKiem'])){
         $sql="SELECT e.KH_MA, KH_HOTEN, KH_SDT, KH_DIACHI, a.LT_MA, LT_TEN, b.GD_TEN, GD_NOIDUNG, GD_NGAYBATDAU, GD_NGAYKETTHUC, GD_TRANGTHAI, DV_TEN FROM khachhang e, lieutrinh a, giaidoan b, giaidoan_dichvu c, dichvu d WHERE e.KH_MA=a.KH_MA AND a.LT_MA=b.LT_MA and b.GD_MA=c.GD_MA and c.DV_MA=d.DV_MA AND ";
@@ -72,12 +73,13 @@
         $query=mysqli_query($conn,$sql);
         if(mysqli_num_rows($query)==0) {echo "Không tồn tài thông tin cần thống kê"; die;}
 ?>
+<hr />
 <div class="form-group">
     <div class="col-sm-6">
-        <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="exportTableToExcel('tableLTKT', 'data')"/>Excel</button></center>
+        <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="exportTableToExcel('tableLTKT', 'data')"/>Xuất ra Excel</button></center>
     </div>
     <div class="col-sm-6">
-        <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="printJS('tableLTKT','html');"/>PDF</button></center>
+        <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="printJS('tableLTKT','html');"/>PDF (hoạt động tốt trên Chorme)</button></center>
     </div>
 </div>
         <table id="tableLTKT" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -160,5 +162,11 @@ function exportTableToExcel(tableID, filename = ''){
         //triggering the function
         downloadLink.click();
     }
-} 
+}
+// Select để in trực tiếp
+function setSubmit() {
+    $('#flttk').attr('target','')
+    $('#flttk').attr('action','nhanvien/excel.php')
+    $('#flttk').submit()
+}
 </script>
