@@ -54,6 +54,7 @@ if(isset($_POST['NgayBD'])){
         ->setAutoSize(true);
 	}
 	$sheet->getStyle('A1:J1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+	$sheet->getStyle('A1:J1')->getFont()->setBold( true );
 	$result = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($result)){
 		$rowCount++;
@@ -64,11 +65,15 @@ if(isset($_POST['NgayBD'])){
 		$sheet->setCellValue('E'.$rowCount,$row['LT_TEN']);
 		$sheet->setCellValue('F'.$rowCount,$row['GD_TEN']);
 		$sheet->setCellValue('G'.$rowCount,$row['DV_TEN']);
-		$sheet->setCellValue('H'.$rowCount,$row['GD_NGAYBATDAU']);
-		$sheet->setCellValue('I'.$rowCount,$row['GD_NGAYKETTHUC']);
+		$sheet->setCellValue('H'.$rowCount,date_format(new DateTime($row['GD_NGAYBATDAU']),'d-m-Y'));
+		$sheet->setCellValue('I'.$rowCount,date_format(new DateTime($row['GD_NGAYKETTHUC']),'d-m-Y'));
 		$sheet->setCellValue('J'.$rowCount,$row['GD_TRANGTHAI']);
 	}
 	$styleArray = array(
+		'font'  => array(
+        	'size'  => 12,
+        	'name'  => 'Arial'
+    	),
 		'borders' => array(
 			'allborders' => array(
 				'style' => PHPExcel_Style_Border::BORDER_THIN
