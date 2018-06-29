@@ -20,18 +20,18 @@
             <label for="txtTTHen" class="col-sm-3 control-label">Trạng thái:  </label>
             <div class="col-sm-8">
                 <select class="form-control" id="slTThai" name="slTThai">
-                    <option value="" class="col-sm-6"> Chọn Trạng Thái: </option>                     
-                    <option <?php if (isset($_POST['slTThai']) == '1') { ?>selected="true" <?php }; ?> value="1" class="col-sm-6">Chưa Thực hiện</option>
-                    <option <?php if (isset($_POST['slTThai']) == '2') { ?>selected="true" <?php }; ?> value="2" class="col-sm-6">Đã thực hiện</option>
-                    <option <?php if (isset($_POST['slTThai']) == '3') { ?>selected="true" <?php }; ?> value="3" class="col-sm-6">Hoàn Thành</option>
-                    <option <?php if (isset($_POST['slTThai']) == '4') { ?>selected="true" <?php }; ?> value="4" class="col-sm-6">Huỷ</option>
+                    <option value="" class="col-sm-6">Chọn Trạng Thái</option>                  
+                    <option value="1" class="col-sm-6">Chưa Thực hiện</option>
+                    <option value="2" class="col-sm-6">Đã thực hiện</option>
+                    <option value="3" class="col-sm-6">Hoàn Thành</option>
+                    <option value="4" class="col-sm-6">Huỷ</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                 <input type="submit"  class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Xem trước"/>
-                <input type="submit"  class="btn btn-primary" name="btnExport" id="btnExport" value="Xuất File Excel Trực Tiếp(.xlsx)" onclick="return setSubmit()"/>
+                <input type="submit"  class="btn btn-primary" name="btnExport" id="btnExport" value="Xuất File Excel Trực Tiếp(.xlsx)" onclick="return exportExcel()"/>
             </div>
         </div>
 </form>
@@ -129,4 +129,9 @@ function exportExcel(){
     $('#flttk').attr('action','nhanvien/excel_lttk.php')
     $('#flttk').submit()
 }
+</script>
+<script type="text/javascript">
+document.getElementById('NgayBD').value = "<?php if(isset($_POST['NgayBD'])){echo $_POST['NgayBD'];}?>";
+document.getElementById('NgayKT').value = "<?php if(isset($_POST['NgayKT'])){echo $_POST['NgayKT'];}?>";
+document.getElementById('slTThai').value = "<?php if(isset($_POST['slTThai'])){echo $_POST['slTThai'];}?>";
 </script>

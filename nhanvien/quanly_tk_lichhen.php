@@ -13,10 +13,10 @@
             <label for="txtTTHen" class="col-sm-3 control-label">Trạng thái:  </label>
             <div class="col-sm-8">
                 <select class="form-control" id="slTThai" name="slTThai">
-                    <option value="" class="col-sm-6">Chọn Trạng Thái: </option>                  
-                    <option <?php if (isset($_POST['slTThai']) == '0') { ?>selected="true" <?php }; ?> value="0" class="col-sm-6">Chưa xác nhận</option>
-                    <option <?php if (isset($_POST['slTThai']) == '1') { ?>selected="true" <?php }; ?>  value="1" class="col-sm-6">Đồng ý</option>
-                    <option <?php if (isset($_POST['slTThai'])  == '2') { ?>selected="true" <?php }; ?>  value="2" class="col-sm-6">Huỷ</option>
+                    <option value="" class="col-sm-6">Chọn Trạng Thái </option>                  
+                    <option value="0" class="col-sm-6">Chưa xác nhận</option>
+                    <option value="1" class="col-sm-6">Đồng ý</option>
+                    <option value="2" class="col-sm-6">Huỷ</option>
                 </select>
             </div>
         </div>
@@ -29,7 +29,7 @@
 </form>
 
 <?php
-    if(isset($_POST['NgayHen'])){     
+    if(isset($_POST['btnTimKiem'])){    
         $sql="SELECT a.KH_MA, KH_HOTEN, KH_SDT, KH_DIACHI, LH_NGAY, LH_THOIGIAN, LH_CHUDE, LH_NOIDUNG, LH_TRANGTHAI FROM khachhang a, lichhen b WHERE a.KH_MA=b.KH_MA AND ";
         if($_POST['NgayHen']!=""){
             $ngayhen=strtotime($_POST['NgayHen']);
@@ -103,4 +103,8 @@ function exportExcel() {
     $('#flhtk').attr('action','nhanvien/excel_lhtk.php')
     $('#flhtk').submit()
 }
+</script>
+<script type="text/javascript">
+document.getElementById('NgayHen').value = "<?php if(isset($_POST['NgayHen'])){echo $_POST['NgayHen'];}?>";
+document.getElementById('slTThai').value = "<?php if(isset($_POST['slTThai'])){echo $_POST['slTThai'];}?>";
 </script>
