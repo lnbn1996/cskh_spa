@@ -87,7 +87,7 @@
 							?>
 						</a>
         <ul class="dropdown-menu">
-          <li><a href="#">Xem thông tin </a></li>
+          <li><a href="index.php?key=cnnv&id=<?php echo $_SESSION['nv_ma']; ?>">Xem thông tin </a></li>
           <li><a href="dangxuat.php">Đăng xuất</a></li>
         </ul>
 
