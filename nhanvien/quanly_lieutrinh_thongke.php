@@ -26,24 +26,20 @@
                     <option value="1" class="col-sm-6">Chưa Thực hiện</option>
                     <option value="2" class="col-sm-6">Đã thực hiện</option>
                     <option value="3" class="col-sm-6">Hoàn Thành</option>
-                    <option value="4" class="col-sm-6">Hoàn Thành</option>
+                    <option value="4" class="col-sm-6">Huỷ</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-                <input type="submit"  class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Hiển Thị"/>
-                <input type="submit"  class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Export" onclick="return setSubmit()"/>
+                <input type="submit"  class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Xem trước"/>
+                <input type="submit"  class="btn btn-primary" name="btnExport" id="btnExport" value="Xuất File Excel Trực Tiếp" onclick="return setSubmit()"/>
             </div>
         </div>
 </form>
 
 <?php
-    if(isset($_POST['btnTimKiem'])){
- header("Content-type: application/octet-stream");
-header("Content-Disposition: attachment; filename=data.xls");
-header("Pragma: no-cache");
-header("Expires: 0");       
+    if(isset($_POST['btnTimKiem'])){     
         $sql="SELECT e.KH_MA, KH_HOTEN, KH_SDT, KH_DIACHI, a.LT_MA, LT_TEN, b.GD_TEN, GD_NOIDUNG, GD_NGAYBATDAU, GD_NGAYKETTHUC, GD_TRANGTHAI, DV_TEN FROM khachhang e, lieutrinh a, giaidoan b, giaidoan_dichvu c, dichvu d WHERE e.KH_MA=a.KH_MA AND a.LT_MA=b.LT_MA and b.GD_MA=c.GD_MA and c.DV_MA=d.DV_MA AND ";
         if($_POST['NgayBD']!=""){
             $nbd=strtotime($_POST['NgayBD']);
@@ -83,7 +79,7 @@ header("Expires: 0");
         <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="exportTableToExcel('tableLTKT', 'data')"/>Xuất ra Excel</button></center>
     </div>
     <div class="col-sm-6">
-        <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="printJS('tableLTKT','html');"/>PDF (hoạt động tốt trên Chorme)</button></center>
+        <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="printJS('tableLTKT','html');"/>PDF</button></center>
     </div>
 </div>
         <table id="tableLTKT" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -170,7 +166,7 @@ function exportTableToExcel(tableID, filename = ''){
 // Select để in trực tiếp
 function setSubmit() {
     $('#flttk').attr('target','')
-    $('#flttk').attr('action','nhanvien/excel.php')
+    $('#flttk').attr('action','nhanvien/excel_lttk.php')
     $('#flttk').submit()
 }
 </script>

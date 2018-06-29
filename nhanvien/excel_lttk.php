@@ -1,11 +1,9 @@
-<meta charset="utf-8" />
 <?php
-require('../tainguyen/vendor/PHPExcel.php');
-require('../csdl/ketnoi.php');
-
+require_once '../tainguyen/vendor/PHPExcel/IOFactory.php';
+require_once '../tainguyen/vendor/PHPExcel.php';
+require_once '../csdl/ketnoi.php';
 if(isset($_POST['NgayBD'])){
 	$sql="SELECT e.KH_MA, KH_HOTEN, KH_SDT, KH_DIACHI, a.LT_MA, LT_TEN, b.GD_TEN, GD_NOIDUNG, GD_NGAYBATDAU, GD_NGAYKETTHUC, GD_TRANGTHAI, DV_TEN FROM khachhang e, lieutrinh a, giaidoan b, giaidoan_dichvu c, dichvu d WHERE e.KH_MA=a.KH_MA AND a.LT_MA=b.LT_MA and b.GD_MA=c.GD_MA and c.DV_MA=d.DV_MA AND ";
-	/*Lấy dữ liệu gửi qua*/
     if($_POST['NgayBD']!=""){
         $nbd=strtotime($_POST['NgayBD']);
         $ngaybd=date('Y-m-d',$nbd);
@@ -15,7 +13,6 @@ if(isset($_POST['NgayBD'])){
         $ngaykt=date('Y-m-d',$nkt);
     }else{$ngaykt="";}
     $trangthai=$_POST['slTThai'];
-	/*Tạo câu select*/
         if($ngaybd!="" && $ngaykt=="" && $trangthai==""){
             $sql.="GD_NGAYBATDAU='$ngaybd'";
         }elseif ($ngaybd=="" && $ngaykt!="" && $trangthai=="") {
@@ -38,12 +35,9 @@ if(isset($_POST['NgayBD'])){
             echo "<script type='text/javascript'>alert('Có lỗi xảy ra, không xuất file Excel được!')</script>";
             echo "<script type='text/javascript'>document.location = '../index.php?key=lttk';</script>";        	
         }	
-	//========================= Xuất File Excel=====================//
 	$objExcel = new PHPExcel;
-	// Set properties
 	$objExcel->setActiveSheetIndex(0);
 	$sheet = $objExcel->getActiveSheet()->setTitle('DS_ThongKe');
-
 	$rowCount = 1;
 	$sheet->setCellValue('A'.$rowCount,'Mã khách hàng');
 	$sheet->setCellValue('B'.$rowCount,'Tên khách hàng');
@@ -55,7 +49,11 @@ if(isset($_POST['NgayBD'])){
 	$sheet->setCellValue('H'.$rowCount,'Ngày Bắt Đầu');
 	$sheet->setCellValue('I'.$rowCount,'Ngày Kết Thúc');
 	$sheet->setCellValue('J'.$rowCount,'Trạng Thái');
-
+	foreach(range('A','J') as $columnID) {
+    	$objExcel->getActiveSheet()->getColumnDimension($columnID)
+        ->setAutoSize(true);
+	}
+	$sheet->getStyle('A1:J1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 	$result = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_array($result)){
 		$rowCount++;
@@ -70,25 +68,24 @@ if(isset($_POST['NgayBD'])){
 		$sheet->setCellValue('I'.$rowCount,$row['GD_NGAYKETTHUC']);
 		$sheet->setCellValue('J'.$rowCount,$row['GD_TRANGTHAI']);
 	}
-	require_once '../tainguyen/vendor/PHPExcel/IOFactory.php';
-	// $objWriter = new PHPExcel_Writer_Excel2007($objExcel);
-
-	$filename = 'ds_thongke2.xlsx';
-	$objWriter = PHPExcel_IOFactory::createWriter($objExcel, 'Excel2007');
-	$objWriter->save($filename);
-	// $objWriter->save($filename);
-
-
-	header('Content-Disposition: attachment; filename="' . $filename . '"');  
-	header('Content-Type: application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet');
-	header("Content-type: application/octet-stream"); 
-	header('Content-Length: ' . filesize($filename));  
-	header('Content-Transfer-Encoding: binary');  
-	header('Cache-Control: must-revalidate');  
-	header('Pragma: no-cache');
+	$styleArray = array(
+		'borders' => array(
+			'allborders' => array(
+				'style' => PHPExcel_Style_Border::BORDER_THIN
+			)
+		)
+	);
+	$sheet->getStyle('A1:'.'J'.($rowCount))->applyFromArray($styleArray);
+	$filename = 'ds_thongke.xlsx';
+    header('Content-Encoding: UTF-8');
+    header('Content-Type: application/vnd.ms-excel;');
+	header("Content-Disposition: attachment;filename=\"$filename\"");
+	header("Cache-Control: max-age=0");
+	header("Pragma: no-cache");
 	header("Expires: 0");
-	$objWriter->save('php://output');
-	// readfile($filename);  
-	// return;
+	$objWriter = PHPExcel_IOFactory::createWriter($objExcel,"Excel2007");
+	ob_end_clean();
+	$objWriter->save("php://output");
+	exit;
 }
 ?>

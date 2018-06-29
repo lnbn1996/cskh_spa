@@ -1,8 +1,6 @@
-<?php
-	$server_username="quan";
+<?php $server_username="quan";
 	$server_password="123";
 	$server_host="localhost";
 	$database="cskh_spa";
 	$conn=mysqli_connect($server_host,$server_username,$server_password,$database) or die("Not connected");
-	mysqli_query($conn,"SET NAMES 'UTF8'") or die (mysqli_connect_error());
-?>  
+	mysqli_query($conn,"SET NAMES 'UTF8'") or die (mysqli_connect_error());?>  
