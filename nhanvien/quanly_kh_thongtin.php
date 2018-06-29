@@ -35,6 +35,8 @@
  <hr />
         <p>
         	<a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="tainguyen/hinhanh/add.png" width="16" height="16" border="0" /> Thêm mới</a>
+            &emsp;
+            <a href="#modalTimKiem" data-target="#modalTimKiem" data-toggle="modal"><img src="tainguyen/hinhanh/search.png" width="16" height="16" border="0" />Tìm kiếm theo ngày sinh</a>
         </p>
         <form id="fKhachHang" name="fKhachHang" method="post" action="" class="form-horizontal" role="form">
         <table id="tableSpaKH" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -225,6 +227,76 @@
         </div>
     </div>
  <!-- End Modal Thêm Mới -->
+<!-- Modal Search Ngày SN -->
+<div class="modal fade" id="modalTimKiem" role="dialog">
+    <div class="modal-dialog modal-lg">      
+    <!-- Modal content-->
+        <div class="modal-content" style="background-color: white; padding: 6%;">
+        <form id="flhtk" name="fflhtk" method="post" action="index.php?key=lhtk" class="form-horizontal" role="form">
+        <!-- Ngày Sinh -->
+        <div class="form-group">
+            <label for="lblNgaySinh" class="col-sm-3 control-label">Ngày sinh:  </label>
+            <div class="col-sm-8" class="input-group">
+                <select name="slNgaySinh" id="slNgaySinh" class="form-control" >
+                    <option value="0">Chọn ngày</option>
+                    <?php
+                      for($i=1;$i<=31;$i++)
+                      {
+                      echo "<option value='".$i."'>".$i."</option>";
+                      }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <!-- Tháng Sinh -->
+        <div class="form-group">
+            <label for="lblThangSinh" class="col-sm-3 control-label">Tháng sinh:  </label>
+            <div class="col-sm-8" class="input-group">
+                <select name="slThangSinh" id="slThangSinh" class="form-control" >
+                    <option value="0">Chọn tháng</option>
+                    <?php
+                      for($i=1;$i<=12;$i++)
+                      {
+                      echo "<option value='".$i."'>".$i."</option>";
+                      }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <!-- Năm Sinh -->
+        <div class="form-group">
+            <label for="lblNamSinh" class="col-sm-3 control-label">Năm sinh:  </label>
+            <div class="col-sm-8" class="input-group">
+                <select name="slNamSinh" id="slNamSinh" class="form-control" >
+                    <option value="0">Chọn năm</option>
+                    <?php
+                      for($i=1970;$i<=2010;$i++)
+                      {
+                      echo "<option value='".$i."'>".$i."</option>";
+                      }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <!-- Ngày - Tháng - Năm Sinh -->
+        <div class="form-group">
+            <label for="NgayHen" class="col-sm-3 control-label">Ngày-Tháng-Năm Sinh:  </label>
+            <div class="col-sm-8">
+                <input type="text" name="NgayHen" id="NgayHen" class="form-control" value="" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="dd-mm-yyyy">
+            </div>
+        </div>                                        
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-8">
+                <input type="submit" class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Xem trước"/>
+                <input type="button" class="btn btn-primary" name="btnExport" id="btnExport" onclick="return exportExcel()" value="Xuất File Excel (.XLSX)"/>
+                <input type="button" class="btn btn-warning" name="btnBoQua"  id="btnBoQua" value="Bỏ qua" data-dismiss="modal" />
+            </div>
+        </div>
+    </form>
+        </div>            
+    </div>
+</div>
+<!-- End Modal Search Ngày SN -->
 <?php
     include 'csdl/ketnoi.php';
     include ('xuly_kh.php');
