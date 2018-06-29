@@ -72,6 +72,9 @@
 					<li>
 						<a href="index.php?key=lttk">Liệu trình thống kê</a>
 					</li>
+					<li>
+						<a href="index.php?key=lhtk">Lịch hẹn thống kê</a>
+					</li>
 					<li class="current-menu-item">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 							<span class="glyphicon glyphicon-user"></span>
@@ -119,6 +122,8 @@
 			include_once("nhanvien/quanly_lieutrinh_chitiet.php");
 		}elseif($key=="lttk"){
 			include_once("nhanvien/quanly_lieutrinh_thongke.php");
+		}elseif($key=="lhtk"){
+			include_once("nhanvien/quanly_tk_lichhen.php");
 		}elseif($key=="nv"){
 			include_once("quanly/quanly_nv_thongtin.php");
 		}elseif($key=="cnnv"){

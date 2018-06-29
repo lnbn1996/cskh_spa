@@ -1,8 +1,6 @@
-<script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://printjs-4de6.kxcdn.com/print.min.css">
-<h2 class="h2-quyen">Thống Kê Liệu Trình</h2>
+<h2 class="h2-quyen"><a href="index.php?key=lttk">Thống Kê Liệu Trình</a></h2>
 <hr />
-<form id="flttk" name="fCapNhatLH" method="post" action="index.php?key=lttk" class="form-horizontal" role="form">
+<form id="flttk" name="flttk" method="post" action="index.php?key=lttk" class="form-horizontal" role="form">
         <!-- Ngày BD -->
         <div class="form-group">
             <label for="NgayBD" class="col-sm-3 control-label">Ngày Bắt Đầu:  </label>
@@ -23,17 +21,17 @@
             <div class="col-sm-8">
                 <select class="form-control" id="slTThai" name="slTThai">
                     <option value="" class="col-sm-6"> Chọn Trạng Thái: </option>                     
-                    <option value="1" class="col-sm-6">Chưa Thực hiện</option>
-                    <option value="2" class="col-sm-6">Đã thực hiện</option>
-                    <option value="3" class="col-sm-6">Hoàn Thành</option>
-                    <option value="4" class="col-sm-6">Huỷ</option>
+                    <option <?php if (isset($_POST['slTThai']) == '1') { ?>selected="true" <?php }; ?> value="1" class="col-sm-6">Chưa Thực hiện</option>
+                    <option <?php if (isset($_POST['slTThai']) == '2') { ?>selected="true" <?php }; ?> value="2" class="col-sm-6">Đã thực hiện</option>
+                    <option <?php if (isset($_POST['slTThai']) == '3') { ?>selected="true" <?php }; ?> value="3" class="col-sm-6">Hoàn Thành</option>
+                    <option <?php if (isset($_POST['slTThai']) == '4') { ?>selected="true" <?php }; ?> value="4" class="col-sm-6">Huỷ</option>
                 </select>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
                 <input type="submit"  class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Xem trước"/>
-                <input type="submit"  class="btn btn-primary" name="btnExport" id="btnExport" value="Xuất File Excel Trực Tiếp" onclick="return setSubmit()"/>
+                <input type="submit"  class="btn btn-primary" name="btnExport" id="btnExport" value="Xuất File Excel Trực Tiếp(.xlsx)" onclick="return setSubmit()"/>
             </div>
         </div>
 </form>
@@ -74,15 +72,7 @@
         if(mysqli_num_rows($query)==0) {echo "Không tồn tài thông tin cần thống kê"; die;}
 ?>
 <hr />
-<div class="form-group">
-    <div class="col-sm-6">
-        <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="exportTableToExcel('tableLTKT', 'data')"/>Xuất ra Excel</button></center>
-    </div>
-    <div class="col-sm-6">
-        <center style="margin-bottom: 1%;"><button type="button" class="btn btn-primary" name="btnExcel" id="btnExcel" onclick="printJS('tableLTKT','html');"/>PDF</button></center>
-    </div>
-</div>
-        <table id="tableLTKT" class="table table-striped table-bordered" cellspacing="0" width="100%">
+<table id="tableLTKT" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th><strong>Mã Khách Hàng</strong></th>
@@ -133,38 +123,8 @@
     } //end if btnTimKiem
 ?>
 <script>
-function exportTableToExcel(tableID, filename = ''){
-    var downloadLink;
-    var dataType = 'application/vnd.ms-excel';
-    var tableSelect = document.getElementById(tableID);
-    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-    
-    // Specify file name
-    filename = filename?filename+'.xls':'excel_data.xls';
-    
-    // Create download link element
-    downloadLink = document.createElement("a");
-    
-    document.body.appendChild(downloadLink);
-    
-    if(navigator.msSaveOrOpenBlob){
-        var blob = new Blob(['\ufeff', tableHTML], {
-            type: dataType
-        });
-        navigator.msSaveOrOpenBlob( blob, filename);
-    }else{
-        // Create a link to the file
-        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-    
-        // Setting the file name
-        downloadLink.download = filename;
-        
-        //triggering the function
-        downloadLink.click();
-    }
-}
 // Select để in trực tiếp
-function setSubmit() {
+function exportExcel(){
     $('#flttk').attr('target','')
     $('#flttk').attr('action','nhanvien/excel_lttk.php')
     $('#flttk').submit()

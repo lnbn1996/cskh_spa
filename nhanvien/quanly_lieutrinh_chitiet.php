@@ -396,10 +396,6 @@
         var lt_ten = $("#TenLT").val();
         var lt_mota = $("#ltMoTa").val();
         var lt_nd = $("#txtNoiDung").val();
-        console.log(lt_ma);
-        console.log(lt_ten);
-        console.log(lt_mota);
-        console.log(lt_nd);
         $.ajax({
             url: 'index.php?key=ltct&ma=LT01',
             type: "post",
@@ -412,7 +408,6 @@
     /*Cập nhật thông tin giai đoạn*/
     function CapNhatGD(a) {
         var gd_ma = a.id;
-        console.log(gd_ma);
         $.ajax({
             url: 'nhanvien/xuly_ltct.php',
             type: "get",

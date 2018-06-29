@@ -5,8 +5,8 @@
  <script language="javascript">
       $(document).ready(function() {
           var table = $('#tableLichHen').DataTable({
-          "aaSorting": [[ 2, "desc" ]],
-          "language": {
+            "ordering": false,
+            "language": {
             "lengthMenu": "Hiển thị _MENU_ dòng dữ liệu trên một trang:",
             "info": "Hiển thị _START_ trong tổng số _TOTAL_ dòng dữ liệu:",
             "infoEmpty": "Dữ liệu rỗng",
@@ -58,7 +58,7 @@
                     <td><?php echo $row['KH_HOTEN'];  ?></td>
                     <td><?php echo $row['KH_SDT'];  ?></td>
                     <td><?php echo date_format(new DateTime($row['LH_NGAY']), 'd-m-Y');   ?></td>
-                    <td><?php echo date_format(new DateTime($row['LH_THOIGIAN']), 'h:i:A');  ?></td>
+                    <td><?php echo date_format(new DateTime($row['LH_THOIGIAN']), 'h:i A');  ?></td>
                     <td><?php echo $row['LH_CHUDE'];  ?></td>
                     <td><?php echo $row['LH_NOIDUNG'];  ?></td>
                     <td align="center">
