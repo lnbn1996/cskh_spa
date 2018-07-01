@@ -75,6 +75,9 @@
 					<li>
 						<a href="index.php?key=lhtk">Lịch hẹn thống kê</a>
 					</li>
+					<li>
+						<a href="index.php?key=qlttnq">Thông tin quyền</a>
+					</li>
 					<li class="current-menu-item">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 							<span class="glyphicon glyphicon-user"></span>
@@ -130,6 +133,8 @@
 			include_once("quanly/quanly_nv_capnhat.php");
 		}elseif($key=="viewkh"){
 			include_once("nhanvien/quanly_kh_timkiem.php");
+		}elseif($key=="qlttnq"){
+			include_once("quanly/quanly_tt_nhomquyen.php");
 		}
 	}
 	else{

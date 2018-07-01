@@ -41,7 +41,6 @@
                                 $query2=mysqli_query($conn,"INSERT INTO giaidoan_dichvu (gd_ma, dv_ma) VALUES ('$magd','$dv_ma')");
                             }
                         }
-                    $url="document.location='../index.php?key=ltct&ma=$malt'";
                     echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>"; 
                     }else{
                         echo "<script type='text/javascript'>alert('Có lỗi xảy ra, thêm giai đoạn không thành công!')</script>";
