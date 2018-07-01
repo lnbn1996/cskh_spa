@@ -1,6 +1,6 @@
 <h2 class="h2-quyen"><a href="index.php?key=lhtk">Lịch hẹn</a></h2>
 <hr />
-<form id="flhtk" name="fflhtk" method="post" action="index.php?key=lhtk" class="form-horizontal" role="form">
+<form id="flhtk" name="flhtk" method="post" action="index.php?key=lhtk" class="form-horizontal" role="form">
         <!-- Ngày Hen -->
         <div class="form-group">
             <label for="NgayHen" class="col-sm-3 control-label">Ngày Hẹn:  </label>

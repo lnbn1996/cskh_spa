@@ -128,6 +128,8 @@
 			include_once("quanly/quanly_nv_thongtin.php");
 		}elseif($key=="cnnv"){
 			include_once("quanly/quanly_nv_capnhat.php");
+		}elseif($key=="viewkh"){
+			include_once("nhanvien/quanly_kh_timkiem.php");
 		}
 	}
 	else{

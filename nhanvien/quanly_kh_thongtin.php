@@ -232,13 +232,13 @@
     <div class="modal-dialog modal-lg">      
     <!-- Modal content-->
         <div class="modal-content" style="background-color: white; padding: 6%;">
-        <form id="flhtk" name="fflhtk" method="post" action="index.php?key=lhtk" class="form-horizontal" role="form">
+        <form id="fkhtk" name="fkhtk" method="get" action="nhanvien/quanly_kh_timkiem.php" class="form-horizontal" role="form">
         <!-- Ngày Sinh -->
         <div class="form-group">
             <label for="lblNgaySinh" class="col-sm-3 control-label">Ngày sinh:  </label>
             <div class="col-sm-8" class="input-group">
                 <select name="slNgaySinh" id="slNgaySinh" class="form-control" >
-                    <option value="0">Chọn ngày</option>
+                    <option value="">Chọn ngày</option>
                     <?php
                       for($i=1;$i<=31;$i++)
                       {
@@ -253,7 +253,7 @@
             <label for="lblThangSinh" class="col-sm-3 control-label">Tháng sinh:  </label>
             <div class="col-sm-8" class="input-group">
                 <select name="slThangSinh" id="slThangSinh" class="form-control" >
-                    <option value="0">Chọn tháng</option>
+                    <option value="">Chọn tháng</option>
                     <?php
                       for($i=1;$i<=12;$i++)
                       {
@@ -268,7 +268,7 @@
             <label for="lblNamSinh" class="col-sm-3 control-label">Năm sinh:  </label>
             <div class="col-sm-8" class="input-group">
                 <select name="slNamSinh" id="slNamSinh" class="form-control" >
-                    <option value="0">Chọn năm</option>
+                    <option value="">Chọn năm</option>
                     <?php
                       for($i=1970;$i<=2010;$i++)
                       {
@@ -277,14 +277,7 @@
                     ?>
                 </select>
             </div>
-        </div>
-        <!-- Ngày - Tháng - Năm Sinh -->
-        <div class="form-group">
-            <label for="NgayHen" class="col-sm-3 control-label">Ngày-Tháng-Năm Sinh:  </label>
-            <div class="col-sm-8">
-                <input type="text" name="NgayHen" id="NgayHen" class="form-control" value="" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="dd-mm-yyyy">
-            </div>
-        </div>                                        
+        </div>                                       
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-8">
                 <input type="submit" class="btn btn-primary" name="btnTimKiem" id="btnTimKiem" value="Xem trước"/>
@@ -305,4 +298,19 @@
     $('#modalThemMoi').on('hidden.bs.modal', function () {
         $(this).find('form').trigger('reset');
     });
+    function exportExcel(){
+    $('#fkhtk').attr('target','')
+    $('#fkhtk').attr('action','nhanvien/excel_khsntk.php')
+    $('#fkhtk').submit()
+    }
+</script>
+<script type="text/javascript">
+// Popup window code
+$(document).ready(function() {
+    $('#fkhtk').submit(function() {
+        window.open('', 'formpopup', 'resizeable,scrollbars');
+        this.target = 'formpopup';
+        location.reload();
+    });
+});
 </script>
