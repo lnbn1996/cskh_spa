@@ -1,12 +1,19 @@
 <?php
     include("../csdl/ketnoi.php");
     // Delete Giai Đoạn
-    if(isset($_GET["ma"]))
+    if(isset($_GET["magd"])&&isset($_GET["madv"]))
         {
           //Nếu xóa thì lấy mã và tiến hành xóa
-            $gd_ma = $_GET["ma"];
-            $query=mysqli_query($conn, "UPDATE `GIAIDOAN` SET GD_TRANGTHAI=0 WHERE gd_ma='$gd_ma'");
-            echo $gd_ma;
+            $gd_ma = $_GET["magd"];
+            $dv_ma = $_GET["madv"];
+            $malt = $_GET["malt"];
+            $query=mysqli_query($conn, "UPDATE `GIAIDOAN_DICHVU` SET GDDV_TRANGTHAI=0 WHERE gd_ma='$gd_ma' AND dv_ma='$dv_ma'");
+            if($query){
+                echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>";
+            }else{
+                echo "<script type='text/javascript'>alert('Có lỗi xảy ra, không thẻ xoá')</script>";
+                echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>";
+            }
         }
     /* Thêm mới giai đoạn */    
     if(isset($_POST["btnThemMoi"]))
@@ -33,12 +40,12 @@
                     $row=mysqli_fetch_array($query1,MYSQLI_ASSOC);
                     $magd = $row['GD_MA'];
                     if(isset($_POST['slDichVu'])){
-                        for ($i=0; $i < count($_POST['slDichVu']);$i++)
+                        for ($i=0; $i < count($_POST['slDichVu'])-1;$i++)
                         {
                             $dv_ma = $_POST['slDichVu'][$i];
                             $q=mysqli_query($conn,"SELECT * FROM DICHVU WHERE DV_MA='$dv_ma'");
                             if(mysqli_num_rows($q)==1){
-                                $query2=mysqli_query($conn,"INSERT INTO giaidoan_dichvu (gd_ma, dv_ma) VALUES ('$magd','$dv_ma')");
+                                $query2=mysqli_query($conn,"INSERT INTO giaidoan_dichvu (gd_ma, dv_ma, gddv_trangthai) VALUES ('$magd','$dv_ma',1)");
                             }
                         }
                     echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>"; 
@@ -86,18 +93,19 @@
                         $ngayktcn=$ngaybdcn;
                     }
                 // End Xu ly ngay
-                $trangthai_gd = $_POST["rdTrangThai"];
-                $dv_ma = $_POST["slDichVuCN"];
+                $trangthai_gddv = $_POST["rdTrangThai"];
+                $dv_ma = $_POST["slDichVuCN-Ma"];
                 //Update to DB
-                $sql="UPDATE `GIAIDOAN` SET GD_TEN='$tengd', GD_NOIDUNG='$ndgd', GD_NGAYBATDAU='$ngaybdcn', GD_NGAYKETTHUC='$ngayktcn', GD_TRANGTHAI='$trangthai_gd' WHERE GD_MA='$magd'";
+                $sql="UPDATE GIAIDOAN SET GD_TEN='$tengd', GD_NOIDUNG='$ndgd', GD_NGAYBATDAU='$ngaybdcn', GD_NGAYKETTHUC='$ngayktcn' WHERE GD_MA='$magd'";
                 $res=mysqli_query($conn,$sql);
                 if($res){
-                    $sql1="UPDATE GIAIDOAN_DICHVU SET DV_MA='$dv_ma' WHERE GD_MA='$magd'";
-                    $res1=mysqli_query($conn,$sql1);
+                    $res1=mysqli_query($conn,"UPDATE GIAIDOAN_DICHVU SET GDDV_TRANGTHAI='$trangthai_gddv' WHERE GD_MA='$magd' AND DV_MA='$dv_ma'");
                     if($res1){
+                        echo mysqli_error($conn);
                         echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>"; 
                     }else{
-                        echo "<script type='text/javascript'>alert('Có lỗi xảy ra, cập nhật không thành công!')</script>";
+                        echo "<script type='text/javascript'>alert('Có lỗi xảy ra, cập nhật không thành côngggggggggggg!')</script>";
+                        echo mysqli_error($conn);
                         echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>";  
                     }
                 }else{
@@ -105,26 +113,11 @@
                         echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>"; 
                     }
         }
-    /*===================================*/
-    /* Xoá nhiều giai đoạn */   
-    if(isset($_POST['btnXoa'])) {
-        $malt=$_POST["lt_ma"];
-        if(isset($_POST['checkbox'])){
-            for ($i=0; $i < count($_POST['checkbox']);$i++)
-            {
-              $gd_ma = $_POST['checkbox'][$i];
-              mysqli_query($conn,"UPDATE `GIAIDOAN` SET GD_TRANGTHAI='0' WHERE gd_ma='$gd_ma' ");
-            }
-            echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>"; 
-        }else{
-            echo "<script type='text/javascript'>alert('Bạn chưa chọn dịch vụ cần xoá!')</script>";
-            echo "<script type='text/javascript'>document.location = '../index.php?key=ltct&ma=$malt';</script>";     
-        }
-    }
     /* Lấy info cho modal cập nhật giai đoạn */   
     if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') { //kiểm tra xe có request Ajax gửi tới hay không
-        $ma = $_GET["gd_ma"];
-        $result = mysqli_query($conn, "SELECT a.gd_ma as gd_ma, gd_ten, gd_noidung, DATE_FORMAT(gd_ngaybatdau,'%d-%m-%Y') as gd_ngaybatdau, DATE_FORMAT(gd_ngayketthuc,'%d-%m-%Y') as gd_ngayketthuc, gd_trangthai, b.dv_ma, dv_ten FROM giaidoan as a, giaidoan_dichvu as b, dichvu as c WHERE a.gd_ma=b.gd_ma AND c.dv_ma=b.dv_ma AND a.gd_ma='$ma'");
+        $gd_ma = $_GET["gd_ma"];
+        $dv_ma = $_GET["dv_ma"];
+        $result = mysqli_query($conn, "SELECT a.gd_ma as gd_ma, gd_ten, gd_noidung, DATE_FORMAT(gd_ngaybatdau,'%d-%m-%Y') as gd_ngaybatdau, DATE_FORMAT(gd_ngayketthuc,'%d-%m-%Y') as gd_ngayketthuc, b.gddv_trangthai, b.dv_ma, dv_ten FROM giaidoan as a, giaidoan_dichvu as b, dichvu as c WHERE a.gd_ma=b.gd_ma AND c.dv_ma=b.dv_ma AND a.gd_ma='$gd_ma' AND b.dv_ma='$dv_ma'");
         $gd_tt = mysqli_fetch_object($result);
         echo json_encode($gd_tt);
     }

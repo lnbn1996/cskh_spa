@@ -99,8 +99,6 @@
     <table id="tablespaGD" class="table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
             <tr>
-                <th><strong>Chọn</strong></th>
-                <th><strong>Mã giai đoạn</strong></th>
                 <th><strong>Tên giai đoạn</strong></th>
                 <th><strong>Nội dung giai đoạn</strong></th>
                 <th><strong>Dịch vụ</strong></th>
@@ -115,14 +113,11 @@
 
 		<tbody>
         <?php
-            $query=mysqli_query($conn,"SELECT a.GD_MA, GD_TEN, GD_NOIDUNG, GD_NGAYBATDAU, GD_NGAYKETTHUC, GD_TRANGTHAI, DV_TEN, DV_GIATIEN, LT_MA FROM GIAIDOAN a, GIAIDOAN_DICHVU c, DICHVU b WHERE a.GD_MA=c.GD_MA AND b.DV_MA=c.DV_MA AND LT_MA='$ma' AND GD_TRANGTHAI!=0 ");
+            $query=mysqli_query($conn,"SELECT a.GD_MA, GD_TEN, GD_NOIDUNG, GD_NGAYBATDAU, GD_NGAYKETTHUC, GDDV_TRANGTHAI,c.DV_MA, DV_TEN, DV_GIATIEN, LT_MA FROM GIAIDOAN a, GIAIDOAN_DICHVU c, DICHVU b WHERE a.GD_MA=c.GD_MA AND b.DV_MA=c.DV_MA AND LT_MA='$ma' AND GDDV_TRANGTHAI!=0 ");
             while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
                 {
         ?>
             <tr>
-                <input type="hidden" name="lt_ma" value="<?php echo $row['LT_MA']; ?>" />
-                <td class="cotCheckBox"><center><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?php echo $row['GD_MA']; ?>"  /></center></td>
-                <td><center><?php echo $row['GD_MA']; ?></center></td> 	
                 <td><?php echo $row['GD_TEN'];  ?></td>
                 <td><?php echo $row['GD_NOIDUNG']; ?></td>
                 <td><?php echo $row['DV_TEN']; ?></td>
@@ -131,22 +126,25 @@
                 <td><?php echo date_format(new DateTime($row['GD_NGAYKETTHUC']), 'd-m-Y'); ?></td>
                 <td>
                     <?php
-                        if($row['GD_TRANGTHAI']==1){
+                        if($row['GDDV_TRANGTHAI']==1){
                             echo "Chưa thực hiện";
-                        }elseif($row['GD_TRANGTHAI']==2){
+                        }elseif($row['GDDV_TRANGTHAI']==2){
                             echo "Đang thực hiện";
-                        }elseif($row['GD_TRANGTHAI']==3){
-                            echo "Đã thực hiện";
+                        }elseif($row['GDDV_TRANGTHAI']==3){
+                            echo "Hoàn thành";
+                        }elseif($row['GDDV_TRANGTHAI']==4){
+                            echo "Huỷ";
                         }
+
                     ?>    
                 </td>
                 <td align='center' class='cotNutChucNang'>
-                    <a href="#modalCapNhatGD" data-target="#modalCapNhatGD" data-toggle="modal" id="<?php echo $row['GD_MA']; ?>" onClick="CapNhatGD(this);">
+                    <a href="#modalCapNhatGD" data-target="#modalCapNhatGD" data-toggle="modal" id="<?php echo $row['GD_MA']; ?>" onClick="CapNhatGD(this,<?php echo $row['DV_MA'];?>);">
                         <img src='tainguyen/hinhanh/edit.png' border='0'/>
                     </a>
                 </td>
                 <td align='center' class='cotNutChucNang'>
-                  	<a id="<?php echo $row['GD_MA']; ?>" onClick="deleteConfirm(); xoaGiaiDoan(this);">
+                  	<a href="nhanvien/xuly_ltct.php?malt=<?php echo $row['LT_MA'];?>&magd=<?php echo $row['GD_MA']; ?>&madv=<?php echo $row['DV_MA']; ?>" onClick="return deleteConfirm();">
                        	<img src='tainguyen/hinhanh/delete.png' border='0' />
                     </a>
                 </td>
@@ -319,19 +317,8 @@
                 <div class="form-group">     
                     <label for="sell" class="col-sm-3 control-label">Tên Dịch vụ:  </label>
                     <div class="col-sm-8">
-                        <select class="form-control" id="slDichVuCN" name="slDichVuCN">
-                            <option value="" class="col-sm-8"> Chọn dịch vụ </option>
-                            <?php
-                                $query=mysqli_query($conn,"SELECT * FROM DICHVU");
-                                while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
-                                {
-                            ?>                       
-                            <option value="<?php echo $row['DV_MA'];?>" class="col-sm-8"><?php echo $row['DV_TEN'];?></option>
-                            <?php 
-                                } 
-                            ?>
-                                                        <option value="10" class="col-sm-8">Hihihihi</option>
-                        </select>
+                            <input type="hidden" value="" name="slDichVuCN-Ma" id="slDichVuCN-Ma">
+                            <input type="text" name="slDichVuCN" id="slDichVuCN" value="" class="form-control" placeholder="Giai đoạn" readonly="readonly" />
                     </div>
                 </div>             
                 <div class="form-group">
@@ -378,18 +365,6 @@
 <!-- End Modal Cập nhật giai đoạn -->
 <script>
     /* reset modal when closed */
-    /*Xoá giai đoạn*/
-    function xoaGiaiDoan(a) {
-        var gd_ma = a.id;
-        $.ajax({
-            url: 'nhanvien/xuly_ltct.php',
-            type: "get",
-            data: 'ma=' + gd_ma,
-            success: function() {   
-                location.reload();
-            }
-        });
-    };
     /*Cập nhật thông tin liệu trình*/
     function CapNhatLT(a) {
         var lt_ma = a.id;
@@ -406,25 +381,29 @@
         });
     };
     /*Cập nhật thông tin giai đoạn*/
-    function CapNhatGD(a) {
+    function CapNhatGD(a,dv_ma) {
         var gd_ma = a.id;
+        var dv_ma = dv_ma;
+        console.log(gd_ma);
+        console.log(dv_ma);
         $.ajax({
             url: 'nhanvien/xuly_ltct.php',
             type: "get",
-            data: {"gd_ma":gd_ma},
+            data: {"gd_ma":gd_ma,"dv_ma":dv_ma},
             success: function(response) {   
                 console.log(response);
                 var obj = JSON.parse(response);
-                if(obj.gd_trangthai == 1){
+                if(obj.gddv_trangthai == 1){
                     $('#fCapNhatGD').find(':radio[name=rdTrangThai][value="1"]').prop('checked', true);
-                }else if(obj.gd_trangthai == 2){
+                }else if(obj.gddv_trangthai == 2){
                     $('#fCapNhatGD').find(':radio[name=rdTrangThai][value="2"]').prop('checked', true);
-                }else if(obj.gd_trangthai == 3){
+                }else if(obj.gddv_trangthai == 3){
                     $('#fCapNhatGD').find(':radio[name=rdTrangThai][value="3"]').prop('checked', true);
-                }else if(obj.gd_trangthai == 4){
+                }else if(obj.gddv_trangthai == 4){
                     $('#fCapNhatGD').find(':radio[name=rdTrangThai][value="4"]').prop('checked', true);
                 }
-                $("#slDichVuCN").val(obj.dv_ma).attr("selected","true");
+                $("#slDichVuCN").val(obj.dv_ten);
+                $("#slDichVuCN-Ma").val(obj.dv_ma);
                 $("#GiaiDoanTenCN").val(obj.gd_ten);
                 $("#GiaiDoanNDCN").val(obj.gd_noidung);
                 $("#NgayBDCN").val(obj.gd_ngaybatdau);
