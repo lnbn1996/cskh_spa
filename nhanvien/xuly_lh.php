@@ -14,11 +14,11 @@
 	    	// echo $lh_trangthai;
 	        $query=mysqli_query($conn, " UPDATE lichhen SET lh_trangthai = '$lh_trangthai' WHERE lh_ma='$lh_ma' ");
 	        if($query){
-	        	echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=ttlh"/>';
+	        	echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=lhtt"/>';
 			}else
 		    {
 		          echo "<script type='text/javascript'>alert('Đã xảy ra lỗi, không xác nhận lịch hẹn được!')</script>";
-		          echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=ttlh"/>';
+		          echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=lhtt"/>';
 		    }
 	}
 	if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') { //kiểm tra xe có request Ajax gửi tới hay không
@@ -43,22 +43,22 @@
             if($trangthai==2){
 		       	$query=mysqli_query($conn, "UPDATE lichhen SET lh_ngay = '$ngayhen', lh_thoigian='$giohen', lh_trangthai='$trangthai' WHERE lh_ma='$ma' ");
 		        if($query){
-		        	echo "<script type='text/javascript'>document.location = '../index.php?key=ttlh';</script>";
+		        	echo "<script type='text/javascript'>document.location = '../index.php?key=lhtt';</script>";
 		        }else{
 		        	echo "<script type='text/javascript'>alert('Đã xảy ra lỗi, không xác nhận lịch hẹn được!')</script>";
-		          	echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=ttlh"/>';
+		          	echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=lhtt"/>';
 		        }            	
             }elseif($ngayhen >= $old){
 		       	$query=mysqli_query($conn, "UPDATE lichhen SET lh_ngay = '$ngayhen', lh_thoigian='$giohen', lh_trangthai='$trangthai' WHERE lh_ma='$ma' ");
 		        if($query){
-		        	echo "<script type='text/javascript'>document.location = '../index.php?key=ttlh';</script>";
+		        	echo "<script type='text/javascript'>document.location = '../index.php?key=lhtt';</script>";
 		        }else{
 		        	echo "<script type='text/javascript'>alert('Đã xảy ra lỗi, không xác nhận lịch hẹn được!')</script>";
-		          	echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=ttlh"/>';
+		          	echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=lhtt"/>';
 		        }
 	    	}else{
 	    		echo "<script type='text/javascript'>alert('Ngày hẹn phải là hôm nay hoặc những ngày sau!')</script>";
-		        echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=ttlh"/>';
+		        echo '<meta http-equiv="refresh" content="0;URL=../index.php?key=lhtt"/>';
 	    	}
         }	
 ?>

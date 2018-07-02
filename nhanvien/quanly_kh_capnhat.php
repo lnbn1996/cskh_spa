@@ -122,10 +122,8 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-						      <input type="button" class="btn btn-primary" name="btnThemMoi" id="btnThemMoi" value="Cập nhật" onclick="validateForm()" />
-						      <a href="index.php?key=kh">
-                              	<input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Trở về"/>
-							  </a>
+						    <input type="button" class="btn btn-primary" name="btnThemMoi" id="btnThemMoi" value="Cập nhật" onclick="validateForm()" />
+							<input type="button" class="btn btn-primary" name="btnBoQua" id="btnBoQua" onClick="goBack()" value="Trở về" />
 						</div>
 					</div>
 				</form>
@@ -153,4 +151,8 @@
 			}
 		}
 	 ?>  
-
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>

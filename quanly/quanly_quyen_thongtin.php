@@ -59,8 +59,8 @@
         <table id="tablespa" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                     <tr>
-                    	 <th><strong>Chọn</strong></th>
-                        <th><strong>Số thứ tự</strong></th>
+                    	 <!-- <th><strong>Chọn</strong></th> -->
+                        <th><strong>Mã Quyền</strong></th>
                         <th><strong>Tên quyền</strong></th>
                          <th><strong>Mô tả</strong></th>
                         <th width="100"><strong>Cập nhật</strong></th>
@@ -75,8 +75,8 @@
               {
             ?>
       			<tr>
-                  	<td class="cotCheckBox"><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?php echo $row['NQCT_MA']; ?>" /></td>
-                    <td class="cotCheckBox"><?php echo $stt;  ?></td>
+<!--                   	<td class="cotCheckBox"><input name="checkbox[]" type="checkbox" id="checkbox[]" value="<?php echo $row['NQCT_MA']; ?>" /></td> -->
+                    <td class="cotCheckBox"><?php echo $row['NQCT_MA'];  ?></td>
                     <td><?php  echo $row['NQCT_TEN'];  ?></td>
                     <td><?php echo $row['NQCT_DIENGIAI'];   ?></td>
 
@@ -115,7 +115,13 @@
                             <h2 class="h2-quyen">Cập nhật quyền </h2>
                             <hr />
                             <form id="formtest" name="formtest" method="post" action="xuly_quyen.php" class="form-horizontal" role="form">
-                            <input type="hidden" name="nqct_ma" id="nqct_ma" value="">
+                                      <div class="form-group">
+                                                <label for="txtTen" class="col-sm-2 control-label">Mã quyền:  </label>
+                                        <div class="col-sm-9">
+                                                      <input type="text" class="form-control" name="nqct_macn" id="nqct_macn" value="" required="">
+                                        </div>
+                                        </div>
+                            <input type="hidden" >
                                         <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
                                         <div class="col-sm-9">
@@ -148,7 +154,13 @@
                         <h2 class="h2-quyen">Thêm quyền </h2>
                         <hr />
                             <form id="form1" name="form1" method="post" action="xuly_quyen.php" class="form-horizontal" role="form">
-                    <!-- ten khach hang -->
+                              <div class="form-group">
+                                                <label for="txtTen" class="col-sm-2 control-label">Mã quyền:  </label>
+                                                <div class="col-sm-9">
+                                                      <input type="text" name="txtMaQ" id="txtMaQ" class="form-control" placeholder="Mã quyền" value='' required="">
+                                                </div>
+                                        </div>
+                    <!-- ten quyen -->
                                         <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Tên quyền:  </label>
                                                 <div class="col-sm-9">
@@ -185,6 +197,7 @@
     });
     function CapNhatQ(a) {
         var nqct_ma = a.id;
+        console.log(nqct_ma);
         $.ajax({
             url:"xuly_quyen.php",
             method:"GET",
@@ -192,7 +205,7 @@
             success: function(response){
                 // console.log(response);
                 var obj = JSON.parse(response);
-                $("#nqct_ma").val(obj.nqct_ma);
+                $("#nqct_macn").val(obj.nqct_ma);
                 $("#txtTenQ").val(obj.nqct_ten);
                 $("#txtMoTaQ").val(obj.nqct_diengiai);
 

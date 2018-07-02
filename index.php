@@ -52,35 +52,45 @@
 				<ul id="main-menu">
 
 					<li>
-						<a href="index.php">Home</a>
+						<a href="index.php" id="index.php">Home</a>
 					</li>
 					<li>
-						<a href="index.php?key=qldv">Dịch vụ</a>
+						<a href="index.php?key=kh" id="kh">Khách hàng</a>
 					</li>
 					<li>
-						<a href="index.php?key=kh">Khách hàng</a>
+						<a href="index.php?key=nv" id="nv">Nhân viên</a>
 					</li>
 					<li>
-						<a href="index.php?key=nv">Nhân viên</a>
+						<a href="index.php?key=qlttnq" id="qlttnq">Thông tin quyền</a>
 					</li>
 					<li>
-						<a href="index.php?key=ttlh">Lịch hẹn</a>
+						<a href="index.php?key=qldv" id="qldv">Dịch vụ</a>
 					</li>
-					<li>
-						<a href="index.php?key=lt">Liệu trình</a>
+					<li class="parent">
+						<a href="index.php?key=lt" id="lt">Liệu trình <img src="tainguyen/hinhanh/down-arrow.png" /></a>
+						<ul class="sub-menu">
+						<li>
+						<a href="index.php?key=lttk" id="lttk">Liệu trình thống kê</a>
+						</li>
+						</ul>
 					</li>
-					<li>
-						<a href="index.php?key=lttk">Liệu trình thống kê</a>
-					</li>
-					<li>
-						<a href="index.php?key=lhtk">Lịch hẹn thống kê</a>
-					</li>
-					<li>
-						<a href="index.php?key=qlttnq">Thông tin quyền</a>
+					<li class="parent">
+						<a href="index.php?key=lhtt" id="lh">Lịch hẹn <img src="tainguyen/hinhanh/down-arrow.png" /></a>
+						<ul class="sub-menu">
+							<li>
+							<a href="index.php?key=lhtk" id="lhtk">Lịch hẹn thống kê</a>	
+							</li>
+						</ul>
 					</li>
 					<li class="current-menu-item">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							<span class="glyphicon glyphicon-user"></span>
+							<?php
+								if($_SESSION["nv_gioitinh"]=="nam"){
+									echo "<img src='tainguyen/hinhanh/user-male.png'/>";
+								}else{
+									echo "<img src='tainguyen/hinhanh/user-female.png'/>";
+								}
+							?>
 							<?php 
 								if(isset($_SESSION["nv_hoten"])){
 									echo " ".$_SESSION["nv_hoten"];	
@@ -113,26 +123,26 @@
 			include_once("nhanvien/quanly_dv_thongtin.php");
 		}elseif($key=="xldv"){
 			include_once("nhanvien/xuly_dv.php");
-		}elseif($key=="ttlh"){
-			include_once("nhanvien/quanly_tt_lichhen.php");
 		}elseif($key=="kh"){
 			include_once("nhanvien/quanly_kh_thongtin.php");
 		}elseif($key=="cnkh"){
 			include_once("nhanvien/quanly_kh_capnhat.php");
+		}elseif($key=="viewkh"){
+			include_once("nhanvien/quanly_kh_timkiem.php");
 		}elseif($key=="lt"){
 			include_once("nhanvien/quanly_lieutrinh_thongtin.php");
 		}elseif($key=="ltct"){
 			include_once("nhanvien/quanly_lieutrinh_chitiet.php");
 		}elseif($key=="lttk"){
 			include_once("nhanvien/quanly_lieutrinh_thongke.php");
+		}elseif($key=="lhtt"){
+			include_once("nhanvien/quanly_tt_lichhen.php");
 		}elseif($key=="lhtk"){
 			include_once("nhanvien/quanly_tk_lichhen.php");
 		}elseif($key=="nv"){
 			include_once("quanly/quanly_nv_thongtin.php");
 		}elseif($key=="cnnv"){
 			include_once("quanly/quanly_nv_capnhat.php");
-		}elseif($key=="viewkh"){
-			include_once("nhanvien/quanly_kh_timkiem.php");
 		}elseif($key=="qlttnq"){
 			include_once("quanly/quanly_tt_nhomquyen.php");
 		}
@@ -149,15 +159,15 @@
   <div class="footer-top-area">
         <div class="container">
             <div class="row">
-              <div class="col-md-3 col-sm-6">
+              <div class="col-md-6 col-md-offset-3">
                     <div class="footer-menu">
-                      <h2 class="footer-title"> Khách hàng </h2>
+                      <h2 class="footer-title">Spa Management Website - Desgin by</h2>
                         <ul>
-                            <li><a href="#">Tài khoản</a></li>
-                            <li><a href="#">Liên hệ</a></li>
-                            <li><a href="#">Sở thích</a></li>
-                            <li><a href="#">Nhà cung cấp</a></li>
-                            <li><a href="#">Thông tin khác</a></li>
+                            <li><a href="#">Lê Nguyễn Bảo Ngọc - lnbn1996@gmail.com</a></li>
+                            <li><a href="#">Nguyễn Minh Quân - nmquan@gmail.com</a></li>
+                            <li><a href="#">Trương Thị Thanh Lam - tttlam@gmai.com</a></li>
+                            <li><a href="#">Nguyễn Trung Kiên - trungkien.ng15@gmail.com</a></li>
+                            <li><a href="#">Trần Nhật Linh - tnlinh@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>

@@ -3,6 +3,7 @@
   		session_start();	
 		if(isset($_POST["btnThemMoi"]))
 		{
+				$maquyen =$_POST["txtMaQ"];
 				$ten = $_POST["txtTenQ"];
 				$mota = $_POST["txtMoTaQ"];
 				$trangthai = 1;
@@ -22,7 +23,8 @@
 					$result = mysqli_query($conn,$sq);
 					if(mysqli_num_rows($result)==0)
 					{
-					   mysqli_query($conn, "INSERT INTO nhomquyenchitiet (nqct_ten, nqct_diengiai, nqct_trangthai) VALUES ('$ten','$mota','$trangthai')");
+					   mysqli_query($conn, "INSERT INTO nhomquyenchitiet (nqct_ma, nqct_ten, nqct_diengiai, nqct_trangthai) VALUES ('$maquyen','$ten','$mota','$trangthai')");
+					   // echo mysqli_error($conn);
 					   echo '<meta http-equiv="refresh" content="0;URL=quanly_quyen_thongtin.php"/>';
 					}
 					else
@@ -50,7 +52,7 @@
     	{
 	      //Nếu xóa thì lấy mã và tiến hành xóa
 	        $nqct_ma = $_GET["ma"];
-	        $query=mysqli_query($conn, "DELETE FROM nhomquyenchitiet where nqct_ma=$nqct_ma");
+	        $query=mysqli_query($conn, "DELETE FROM nhomquyenchitiet where nqct_ma='$nqct_ma'");
 	        if($query){
 	        	echo '<meta http-equiv="refresh" content="0;URL=quanly_quyen_thongtin.php"/>';
 			}else
@@ -62,13 +64,13 @@
 	     
 	    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') { //kiểm tra xe có request Ajax gửi tới hay không
 				$ma = $_GET["nqct_ma"];
-				$result = mysqli_query($conn, "SELECT nqct_ma, nqct_ten, nqct_diengiai FROM nhomquyenchitiet WHERE nqct_ma=$ma");
+				$result = mysqli_query($conn, "SELECT nqct_ma, nqct_ten, nqct_diengiai FROM nhomquyenchitiet WHERE nqct_ma='$ma'");
 				$nqct_tt = mysqli_fetch_object($result);
 				echo json_encode($nqct_tt);
 		}
 		if(isset($_POST["btnCapNhat"]))
         {
-            $ma = $_POST["nqct_ma"];
+            $nqct_ma = $_POST["nqct_macn"];
             $ten = $_POST["txtTenQ"];
             $diengiai = $_POST["txtMoTaQ"];
             $loi="";
@@ -83,8 +85,10 @@
             }
             else
             {   
-	            mysqli_query($conn, "UPDATE nhomquyenchitiet SET nqct_ten = '$ten', nqct_diengiai='$diengiai' WHERE nqct_ma=$ma");
-	            echo "<script type='text/javascript'>document.location = 'quanly_quyen_thongtin.php';</script>";
+	            mysqli_query($conn, "UPDATE nhomquyenchitiet SET nqct_ma='$nqct_ma
+	            	',nqct_ten = '$ten', nqct_diengiai='$diengiai' WHERE nqct_ten = '$ten'");
+	            echo mysqli_error($conn);
+	            // echo "<script type='text/javascript'>document.location = 'quanly_quyen_thongtin.php';</script>";
             }
         }
 	?>
