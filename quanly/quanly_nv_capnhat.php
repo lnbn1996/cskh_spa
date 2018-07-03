@@ -1,8 +1,9 @@
 <?php
 	require_once('csdl/ketnoi.php');
 	$manv=$_GET["id"];
-	$query=mysqli_query($conn,"SELECT * FROM nhanvien where NV_MA='$manv'");
+	$query=mysqli_query($conn,"SELECT * FROM nhanvien a, taikhoan b where a.TENNGUOIDUNG=b.TENNGUOIDUNG AND NV_MA='$manv'");
 	$result=mysqli_fetch_array($query);
+	$nqma=$result['NQ_MA'];
 ?>
 
 
@@ -105,7 +106,27 @@
 
 </div>
 					 </div>
-
+<!-- Chọn nhóm quyền -->
+            <div class="form-group">
+                <label for="slNhomQuyen" class="col-sm-2 control-label">Tên nhóm quyền:  </label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="slNhomQuyen" name="slNhomQuyen" required="">
+                        <option value="" class="col-sm-10"> Chọn nhóm quyền </option>
+                        <?php
+                            $query=mysqli_query($conn,"SELECT * FROM NHOMQUYEN");
+                            while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
+                            {
+                            	$ma=$row['NQ_MA'];
+                        ?>                       
+                        <option value="<?php echo $ma;?>"
+                        	<?php if($ma=$nqma){ echo 'selected="selected"'; }?> 
+                        	class="col-sm-6"><?php echo $row['NQ_TEN'];?></option>
+                        <?php 
+                            } 
+                        ?>
+                    </select>
+                </div>
+            </div> 
 
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
@@ -127,8 +148,9 @@
 				$diachi=$_POST["txtDiaChi"];
 				$dienthoai=$_POST["txtDienThoai"];
 				$email=$_POST["txtEmail"];
-				$sql="UPDATE `nhanvien` SET `NV_HOTEN` = '$ten' ,`NV_GIOITINH` = '$gioitinh',`NV_NGAYSINH` = $ngay_sinh,`NV_DIACHI` = '$diachi',`NV_SDT` = '$dienthoai',`NV_EMAIL` = '$email',`NV_THANGSINH` = $thang_sinh,`NV_NAMSINH` = $nam_sinh WHERE `NV_MA` = '$manv'";
-				if (!mysqli_query($conn,$sql))
+				$nq=$_POST['slNhomQuyen'];
+				$sql="UPDATE `nhanvien` SET `NV_HOTEN` = '$ten' ,`NV_GIOITINH` = '$gioitinh',`NV_NGAYSINH` = $ngay_sinh,`NV_DIACHI` = '$diachi',`NV_SDT` = '$dienthoai',`NV_EMAIL` = '$email',`NV_THANGSINH` = $thang_sinh,`NV_NAMSINH` = $nam_sinh, NQ_MA='$nq' WHERE `NV_MA` = '$manv'";
+				if (!$query)
 				{
 					//echo "Có lỗi xảy ra, không cập nhật được!";
 					echo (mysqli_error($conn));

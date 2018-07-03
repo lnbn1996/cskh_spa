@@ -36,6 +36,7 @@
               "previous": "<<"
             }
           },
+          "pageLength" : -1,
           "lengthMenu": [[5,10,15,20,25,-1],[5,10,15,20,25,"Tất cả"]]
             });
           new $.fn.dataTable.FixedHeader( table );
@@ -118,7 +119,7 @@
                                       <div class="form-group">
                                                 <label for="txtTen" class="col-sm-2 control-label">Mã quyền:  </label>
                                         <div class="col-sm-9">
-                                                      <input type="text" class="form-control" name="nqct_macn" id="nqct_macn" value="" required="">
+                                                      <input type="text" class="form-control" name="nqct_macn" id="nqct_macn" value="" required="" readonly="readonly">
                                         </div>
                                         </div>
                             <input type="hidden" >

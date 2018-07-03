@@ -4,7 +4,7 @@
 <div class="col-sm-12" style="margin-bottom: 1%;">
 <form id="form1" name="form1" method="post" action="" class="form-horizontal" role="form">  
     <div class="btm-group">
-        <div class="col-sm-6">
+        <div class="col-sm-6 col-sm-offset-5">
         <a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><input type="submit" class="btn btn-info btn-sm" name="btnThemMoiNQ" id="btnThemMoiNQ" value="Thêm nhóm quyền"/></a>
         <a href="#modalThemVaiTro" data-target="#modalThemVaiTro" data-toggle="modal"><input type="submit" class="btn btn-info btn-sm" name="btnThemMoiVT" id="btnThemMoiVT" value="Thêm vai trò cho nhóm quyền"/></a>    
         </div>
@@ -20,7 +20,7 @@
         $nq_ma=$row['nq_ma'];
 ?>
 <div class="list-group">
-    <div class="col-sm-4"  style="margin-bottom: 1%;">
+    <div class="col-sm-6 col-sm-offset-3"  style="margin-bottom: 1%;">
         <ul class="list-group">
   		<li class="list-group-item list-group-item-action list-group-item-info">
             <?php echo "Nhóm ".$row['nq_ten'];?>

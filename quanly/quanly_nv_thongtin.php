@@ -47,6 +47,7 @@
                     <th><strong>Địa chỉ</strong></th>
                     <th><strong>Điện thoại</strong></th>
                     <th><strong>Email</strong></th>
+                    <th><strong>Nhóm quyền</strong></th>
                     <th><strong>Cập nhật</strong></th>
                     <th><strong>Xóa</strong></th>
                 </tr>
@@ -55,7 +56,7 @@
 			<tbody>
 
 				<?php
-					$result = mysqli_query($conn, "SELECT * FROM NHANVIEN WHERE NV_TRANGTHAI=1");
+					$result = mysqli_query($conn, "SELECT * FROM NHANVIEN a, TAIKHOAN b, NHOMQUYEN c WHERE a.TENNGUOIDUNG=b.TENNGUOIDUNG AND c.NQ_MA=a.NQ_MA AND NV_TRANGTHAI=1");
 					while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 					{
 						$ngaysinh=$row["NV_NGAYSINH"]."/".$row["NV_THANGSINH"]."/".$row["NV_NAMSINH"];
@@ -70,6 +71,7 @@
               <td><?php echo $row["NV_DIACHI"];  ?></td>
               <td><?php echo $row["NV_SDT"]; ?></td>
               <td><?php echo $row["NV_EMAIL"]; ?></td>
+              <td><?php echo $row["NQ_TEN"]; ?></td>
 
               <td align='center' class='cotNutChucNang'>
               <a href="index.php?key=cnnv&id=<?php echo $row['NV_MA']; ?>">
@@ -122,12 +124,9 @@
           <?php
                             for($i=1;$i<=31;$i++)
                              {
-                                 if($i==$ngaysinh){
-                                     echo "<option value='".$i."' selected=\"selected\">".$i."</option>";
-                                 }
-                                 else{
-                                 echo "<option value='".$i."'>".$i."</option>";
-                                 }
+
+                                echo "<option value='".$i."'>".$i."</option>";
+
                              }
                         ?>
           </select>
@@ -138,12 +137,7 @@
           <?php
                         for($i=1;$i<=12;$i++)
                          {
-                              if($i==$thangsinh){
-                                 echo "<option value='".$i."' selected=\"selected\">".$i."</option>";
-                             }
-                             else{
                              echo "<option value='".$i."'>".$i."</option>";
-                             }
                          }
                     ?>
           </select>
@@ -181,13 +175,31 @@
                     </div>
                     </div>
           <!-- email-->
-                    <div class="form-group">
-                       <label for="lblEmail" class="col-sm-2 control-label">Email:  </label>
-          <div class="col-sm-10">
-                <input type="text" name="txtEmail" id="txtEmail" value="" class="form-control" placeholder="nhanvien@gmail.com"/>
+            <div class="form-group">
+                <label for="lblEmail" class="col-sm-2 control-label">Email:  </label>
+                <div class="col-sm-10">
+                    <input type="text" name="txtEmail" id="txtEmail" value="" class="form-control" placeholder="nhanvien@gmail.com"/>
 
-          </div>
-          </div>
+                </div>
+            </div>
+<!-- Chọn nhóm quyền -->
+            <div class="form-group">
+                <label for="slNhomQuyen" class="col-sm-2 control-label">Tên nhóm quyền:  </label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="slNhomQuyen" name="slNhomQuyen" required="">
+                        <option value="" class="col-sm-10"> Chọn nhóm quyền </option>
+                        <?php
+                            $query=mysqli_query($conn,"SELECT * FROM NHOMQUYEN");
+                            while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
+                            {
+                        ?>                       
+                        <option value="<?php echo $row['NQ_MA'];?>" class="col-sm-6"><?php echo $row['NQ_TEN'];?></option>
+                        <?php 
+                            } 
+                        ?>
+                    </select>
+                </div>
+            </div> 
               <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="submit"  class="btn btn-primary" name="btnThemMoi" id="btnThemMoi" value="Thêm mới"  onclick="return validateForm()"/>

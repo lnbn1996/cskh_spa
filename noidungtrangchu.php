@@ -22,7 +22,7 @@
 					</div>
                 		<div class="form-group">
 						<div class="col-sm-offset-8 col-sm-10">
-						      <input type="submit"  class="btn btn-primary" name="btnTimkiem" id="btnTimKiem" value="Tìm kiếm"/>
+						      <input type="submit"  class="btn btn-primary" name="btnTimkiem" id="btnTimKiemLT" value="Tìm kiếm"/>
 
 						</div>
 					</div>
@@ -40,7 +40,7 @@
 					</div>
                 		<div class="form-group">
 						<div class="col-sm-offset-8 col-sm-10">
-						      <input type="submit"  class="btn btn-primary" name="btnTimkiem" id="btnTimKiem" value="Tìm kiếm"/>
+						      <input type="submit"  class="btn btn-primary" name="btnTimkiem" id="btnTimKiemKH" value="Tìm kiếm"/>
 
 						</div>
 					</div>

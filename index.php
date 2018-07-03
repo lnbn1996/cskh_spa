@@ -1,7 +1,7 @@
 <?php
 	include("csdl/ketnoi.php");
 	session_start();
-	if(!isset($_SESSION['tennguoidung'])){
+	if(!isset($_SESSION['tennguoidung']) OR $_SESSION['nq_ma']=="NQ01"  ){
 		echo "<script type='text/javascript'>alert('Mời bạn đăng nhập!')</script>";
 		echo '<meta http-equiv="refresh" content="0;URL=dangnhap.php"/>';
 	}
@@ -41,7 +41,33 @@
 	<title>Trang chủ </title>
 
 </head>
+<script type="text/javascript">
+	
+</script>
 <body>
+<?php
+	if(isset($_SESSION['nq_ma'])){
+		$nq_ma=$_SESSION['nq_ma'];
+	}else{
+		echo "<script type='text/javascript'>alert('Bạn không có quyền vào trang này!')</script>";
+		echo '<meta http-equiv="refresh" content="0;URL=dangnhap.php"/>';		
+	}
+	$sql="SELECT * FROM nhomquyen a, nq_nqct b, nhomquyenchitiet c WHERE a.nq_ma=b.nq_ma AND b.nqct_ma=c.nqct_ma AND a.nq_ma='$nq_ma'";
+	$query=mysqli_query($conn,$sql);
+	while($re=mysqli_fetch_array($query,MYSQLI_ASSOC))
+	{
+		$nqct_ma = $re['NQCT_MA'];
+?>
+		<?php
+		echo "<script>
+		$(function() {
+			$('#".$nqct_ma."').show();
+		});
+		</script>";
+		?>
+<?php
+	}
+?>
 <!-- Header -->
 <div id="wrap">
     <header>
@@ -50,37 +76,32 @@
 			<!-- <a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a> -->
 			<nav id="navigation">
 				<ul id="main-menu">
-
 					<li>
 						<a href="index.php" id="index.php">Home</a>
 					</li>
-					<li>
-						<a href="index.php?key=kh" id="kh">Khách hàng</a>
+					<li id="kh" style="display: none;">
+						<a href="index.php?key=kh">Khách hàng</a>
 					</li>
-					<li>
+					<li id="nv" style="display: none;">
 						<a href="index.php?key=nv" id="nv">Nhân viên</a>
 					</li>
-					<li>
+					<li id="qlttnq" style="display: none;">
 						<a href="index.php?key=qlttnq" id="qlttnq">Thông tin quyền</a>
 					</li>
-					<li>
-						<a href="index.php?key=qldv" id="qldv">Dịch vụ</a>
+					<li  id="qldv" style="display: none;">
+						<a href="index.php?key=qldv">Dịch vụ</a>
 					</li>
-					<li class="parent">
-						<a href="index.php?key=lt" id="lt">Liệu trình <img src="tainguyen/hinhanh/down-arrow.png" /></a>
-						<ul class="sub-menu">
-						<li>
-						<a href="index.php?key=lttk" id="lttk">Liệu trình thống kê</a>
-						</li>
-						</ul>
+					<li  id="lt" style="display:none">
+						<a href="index.php?key=lt">Liệu trình</a>
 					</li>
-					<li class="parent">
-						<a href="index.php?key=lhtt" id="lh">Lịch hẹn <img src="tainguyen/hinhanh/down-arrow.png" /></a>
-						<ul class="sub-menu">
-							<li>
-							<a href="index.php?key=lhtk" id="lhtk">Lịch hẹn thống kê</a>	
-							</li>
-						</ul>
+					<li  id="lttk" style="display: none;">
+						<a href="index.php?key=lttk">Liệu trình thống kê</a>
+					</li>
+					<li  id="lh">
+						<a href="index.php?key=lhtt">Lịch hẹn</a>
+					</li>
+					<li id="lhtk" style="display: none;">
+						<a href="index.php?key=lhtk" >Lịch hẹn thống kê</a>	
 					</li>
 					<li class="current-menu-item">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -101,6 +122,7 @@
 						</a>
         <ul class="dropdown-menu">
           <li><a href="index.php?key=cnnv&id=<?php echo $_SESSION['nv_ma']; ?>">Xem thông tin </a></li>
+          <li><a href="#modalCapNhat" data-target="#modalCapNhat" data-toggle="modal">Thay đổi mật khẩu</a></li>
           <li><a href="dangxuat.php">Đăng xuất</a></li>
         </ul>
 
@@ -127,8 +149,6 @@
 			include_once("nhanvien/quanly_kh_thongtin.php");
 		}elseif($key=="cnkh"){
 			include_once("nhanvien/quanly_kh_capnhat.php");
-		}elseif($key=="viewkh"){
-			include_once("nhanvien/quanly_kh_timkiem.php");
 		}elseif($key=="lt"){
 			include_once("nhanvien/quanly_lieutrinh_thongtin.php");
 		}elseif($key=="ltct"){
@@ -176,6 +196,41 @@
     </div>
 </div>
 <!-- End footer top area -->
-
+ <!-- Modal cập nhật -->
+<div class="modal fade" id="modalCapNhat" role="dialog">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content" style="background-color: white;">
+            <h2 class="h2-quyen">Thay đổi mật khẩu</h2>
+            <hr />
+            <form id="fDoiMKhau" name="fDoiMKhau" method="post" action="xuly_doimatkhau.php" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="txtMK" class="col-sm-4 control-label">Mật khẩu cũ:</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control" name="txtMK" id="txtMK" value="" required="">
+                	</div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMK1" class="col-sm-4 control-label">Mật khẩu mới:</label>
+                    <div class="col-sm-6">
+                        <input type="password" name="txtMK1" id="txtMK1" class="form-control" value="" required="" onkeyup="checkLongPass(); return false;" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="txtMK2" class="col-sm-4 control-label">Nhập lại mật khẩu mới:</label>
+                    <div class="col-sm-6">
+                        <input type="password" name="txtMK2" id="txtMK2" value="" class="form-control" required="" onChange="checkPass(); return false;"/>
+                        <span id="confirmMessage" class="confirmMessage"></span>
+                    </div>
+                </div>             
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <input type="submit"  class="btn btn-primary" name="btnCNMK" id="btnCNMK" value="Cập nhật"/>
+                        <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Trở về" data-dismiss="modal" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>

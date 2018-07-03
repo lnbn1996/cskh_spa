@@ -12,7 +12,7 @@ function validateForm(){
 	var form1=name;
 	for (var i = 0; i < document.getElementById("form1").elements.length; i++) {
 	 	x=document.getElementById("form1").elements[i];
-	 	if (x.name=="txtTen" && !/^[a-zA-Z_\sÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{1,}$/.test(document.form1.txtTen.value)){
+	 	if (x.name=="txtTen" && !/^[a-zA-Z_\sÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀẾỂưăạảấầẩẫậắằẳẵặẹẻẽềếểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]{1,}$/.test(document.form1.txtTen.value)){
 	 		alert("Tên không hợp lệ");
 	 		return false;
 	 	} else if(x.name=="grpGioiTinh"){
@@ -74,4 +74,46 @@ function validateForm(){
 		}
 	}
 	document.form1.submit();
+}
+//Check thay doi mat khau
+function checkPass()
+{
+    //Store the password field objects into variables ...
+    var pass1 = document.getElementById('txtMK1');
+    var pass2 = document.getElementById('txtMK2');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field 
+    //and the confirmation field
+    if(pass1.value == pass2.value){
+        //The passwords match. 
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password 
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Mật khẩu mới đã khớp!"
+    }else{
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Mật khẩu mới chưa khớp!"
+    }
+}
+//Check long pass
+function checkLongPass()
+{
+    var pass0 = document.getElementById('txtMK1').value;
+    var message1 = document.getElementById('confirmMessage');
+    // var badColor = "#ff6666";
+    if(pass0.length <= 7 || pass0.length >= 17 ){
+    	// message1.style.color = goodColor;
+        message1.innerHTML = "Mật khẩu mới phải có độ dài từ 8 - 16 ký tự!"
+    }else{
+    	message1.innerHTML = "";
+    }
 }

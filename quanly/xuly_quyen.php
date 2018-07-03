@@ -85,10 +85,9 @@
             }
             else
             {   
-	            mysqli_query($conn, "UPDATE nhomquyenchitiet SET nqct_ma='$nqct_ma
-	            	',nqct_ten = '$ten', nqct_diengiai='$diengiai' WHERE nqct_ten = '$ten'");
-	            echo mysqli_error($conn);
-	            // echo "<script type='text/javascript'>document.location = 'quanly_quyen_thongtin.php';</script>";
+	            mysqli_query($conn, "UPDATE nhomquyenchitiet SET nqct_ten = '$ten', nqct_diengiai='$diengiai' WHERE nqct_ma = '$nqct_ma'");
+	            // echo mysqli_error($conn);
+	            echo "<script type='text/javascript'>document.location = 'quanly_quyen_thongtin.php';</script>";
             }
         }
 	?>

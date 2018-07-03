@@ -34,7 +34,7 @@
 <h2 class="h2-kh">Quản lý thông tin Khách Hàng</h2>
  <hr />
         <p>
-        	<a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="tainguyen/hinhanh/add.png" width="16" height="16" border="0" /> Thêm mới</a>
+        	<a href="#modalThemMoi" data-target="#modalThemMoi" data-toggle="modal"><img src="tainguyen/hinhanh/add.png" width="16" height="16" border="0"/> Thêm mới</a>
             &emsp;
             <a href="#modalTimKiem" data-target="#modalTimKiem" data-toggle="modal"><img src="tainguyen/hinhanh/search.png" width="16" height="16" border="0" />Tìm kiếm theo ngày sinh</a>
         </p>
