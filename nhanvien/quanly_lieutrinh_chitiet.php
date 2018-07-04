@@ -40,6 +40,11 @@
 <!-- ma lt-->
 <?php
     include("csdl/ketnoi.php");
+    if(isset($_POST["ma"])){
+        $ma=$_POST["ma"];
+        $result = mysqli_query($conn, "SELECT LT_MA, LT_TEN, LT_MOTA, LT_NOIDUNG, LT_GIA, LT_NGAYTAO, LT_NGAYCAPNHAT, LT_TRANGTHAI, a.KH_MA, KH_HOTEN, KH_SDT, LT_LOAI FROM LIEUTRINH as a, KHACHHANG as b WHERE a.KH_MA=b.KH_MA AND LT_MA='$ma'");
+        $row=mysqli_fetch_array($result, MYSQLI_ASSOC);
+    }
     if(isset($_GET["ma"])){
         $ma=$_GET["ma"];
         $result = mysqli_query($conn, "SELECT LT_MA, LT_TEN, LT_MOTA, LT_NOIDUNG, LT_GIA, LT_NGAYTAO, LT_NGAYCAPNHAT, LT_TRANGTHAI, a.KH_MA, KH_HOTEN, KH_SDT, LT_LOAI FROM LIEUTRINH as a, KHACHHANG as b WHERE a.KH_MA=b.KH_MA AND LT_MA='$ma'");

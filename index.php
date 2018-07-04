@@ -1,9 +1,17 @@
 <?php
 	include("csdl/ketnoi.php");
 	session_start();
+	if(isset($_SESSION['nq_ma'])){
+		$nq_ma=$_SESSION['nq_ma'];
+	}else{
+		$nq_ma="NQ01";		
+	}
 	if(!isset($_SESSION['tennguoidung']) OR $_SESSION['nq_ma']=="NQ01"  ){
 		echo "<script type='text/javascript'>alert('Mời bạn đăng nhập!')</script>";
 		echo '<meta http-equiv="refresh" content="0;URL=dangnhap.php"/>';
+	}
+	if(!isset($_SESSION['nv_gioitinh'])){
+		$_SESSION['nv_gioitinh']=="nam";
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -46,12 +54,6 @@
 </script>
 <body>
 <?php
-	if(isset($_SESSION['nq_ma'])){
-		$nq_ma=$_SESSION['nq_ma'];
-	}else{
-		echo "<script type='text/javascript'>alert('Bạn không có quyền vào trang này!')</script>";
-		echo '<meta http-equiv="refresh" content="0;URL=dangnhap.php"/>';		
-	}
 	$sql="SELECT * FROM nhomquyen a, nq_nqct b, nhomquyenchitiet c WHERE a.nq_ma=b.nq_ma AND b.nqct_ma=c.nqct_ma AND a.nq_ma='$nq_ma'";
 	$query=mysqli_query($conn,$sql);
 	while($re=mysqli_fetch_array($query,MYSQLI_ASSOC))
@@ -91,6 +93,9 @@
 					<li  id="qldv" style="display: none;">
 						<a href="index.php?key=qldv">Dịch vụ</a>
 					</li>
+					<li id="tb">
+						<a href="index.php?key=tb" >Thông báo</a>	
+					</li>
 					<li  id="lt" style="display:none">
 						<a href="index.php?key=lt">Liệu trình</a>
 					</li>
@@ -106,7 +111,7 @@
 					<li class="current-menu-item">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 							<?php
-								if($_SESSION["nv_gioitinh"]=="nam"){
+								if($_SESSION['nv_gioitinh']=="nam"){
 									echo "<img src='tainguyen/hinhanh/user-male.png'/>";
 								}else{
 									echo "<img src='tainguyen/hinhanh/user-female.png'/>";
@@ -165,6 +170,8 @@
 			include_once("quanly/quanly_nv_capnhat.php");
 		}elseif($key=="qlttnq"){
 			include_once("quanly/quanly_tt_nhomquyen.php");
+		}elseif($key=="tb"){
+			include_once("quanly_thongbao.php");
 		}
 	}
 	else{

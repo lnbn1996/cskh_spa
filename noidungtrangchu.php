@@ -4,26 +4,23 @@
 
         	<div> nội dung ... </div>
             <div class="xemthem" >
-            	<a href="##"> << xem thêm >>  </a>
+            	<a href="#"> << xem thêm >>  </a>
              </div>
         </div>
         <div class="index-tk" >
           <div class="tk-lh-gy" >Tìm kiếm</div>
-
-
             <div class="tk-lieutrinh" >
             	<div class="tt-lt-kh"> Thông tin liệu trình </div>
-            	<form name="tk-lieutrinh" action="#" method="post" class="form-horizontal" >
+            	<form name="tk-lieutrinh" action="index.php?key=ltct" method="post" class="form-horizontal" >
                 	<div class="form-group">
 						    <label for="txtLTma" class="col-sm-3 control-label"> Nhập mã:  </label>
 							<div class="col-sm-9">
-    						      <input type="text" name="lt-ma" id="lt-ma" class="form-control" placeholder="Mã liệu trình" value=''>
+    						      <input type="text" name="ma" id="ma" class="form-control" placeholder="Mã liệu trình" value=''>
 							</div>
 					</div>
                 		<div class="form-group">
 						<div class="col-sm-offset-8 col-sm-10">
-						      <input type="submit"  class="btn btn-primary" name="btnTimkiem" id="btnTimKiemLT" value="Tìm kiếm"/>
-
+                        <input type="submit" class="btn btn-primary" name="btnTimkiem"LT id="btnTimKiemLT" value="Tìm kiếm"/>
 						</div>
 					</div>
                 </form>
@@ -45,7 +42,6 @@
 						</div>
 					</div>
                 </form>
-
         </div>
         </div>
         <div class="index-gy" >
@@ -53,6 +49,6 @@
 
             <div> nội dung ... </div>
             <div class="xemthem" >
-            	<a href="##"> << xem thêm >>  </a>
+            	<a href="#"> << xem thêm >>  </a>
              </div>
         </div>
