@@ -232,7 +232,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-8">
                         <input type="submit"  class="btn btn-primary" name="btnCNMK" id="btnCNMK" value="Cập nhật"/>
-                        <input type="button" class="btn btn-primary" name="btnBoQua"  id="btnBoQua" value="Trở về" data-dismiss="modal" />
+                        <input type="button" class="btn btn-primary" name="btnBoQuaCNMK"  id="btnBoQuaCNMK" value="Trở về" data-dismiss="modal" />
                     </div>
                 </div>
             </form>

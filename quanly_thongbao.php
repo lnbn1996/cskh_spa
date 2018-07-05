@@ -25,7 +25,6 @@
           },
           "lengthMenu": [[5,10,15,20,25,-1],[5,10,15,20,25,"Tất cả"]]
             });
-          new $.fn.dataTable.FixedHeader( table );
       });
 </script>
 <h2 class="h2-nv">Quản lý thông báo</h2>
